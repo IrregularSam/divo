@@ -332,20 +332,32 @@ const App: React.FC = () => {
           </p>
           <div className="tilt-container max-w-5xl mx-auto">
             <div className={`relative w-full aspect-video bg-surface-light dark:bg-surface-dark rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden group glow-box tilt-card ${isHeroPlaying ? 'no-tilt' : ''}`}>
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-purple-500/10 opacity-50"></div>
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <button 
-                  onClick={() => setIsHeroPlaying(!isHeroPlaying)}
-                  className="w-24 h-24 rounded-full glass border border-white/20 text-white flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary/40 group-hover:bg-primary/90"
-                >
-                  <Play size={36} fill="white" className="ml-1" />
-                </button>
-              </div>
-              <img 
-                alt="Hero Visual" 
-                className={`w-full h-full object-cover transition-all duration-700 ${isHeroPlaying ? 'opacity-100 grayscale-0' : 'opacity-60 mix-blend-overlay grayscale group-hover:grayscale-0'}`} 
-                src="https://images.unsplash.com/photo-1550745679-5652175bdb7f?auto=format&fit=crop&q=80&w=1600"
-              />
+              {isHeroPlaying ? (
+                <iframe
+                  src="https://www.youtube.com/embed/vX-inQa3MKk?autoplay=1"
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-0"
+                ></iframe>
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-purple-500/10 opacity-50"></div>
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <button 
+                      onClick={() => setIsHeroPlaying(true)}
+                      className="w-24 h-24 rounded-full glass border border-white/20 text-white flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary/40 group-hover:bg-primary/90"
+                    >
+                      <Play size={36} fill="white" className="ml-1" />
+                    </button>
+                  </div>
+                  <img 
+                    alt="Hero Visual" 
+                    className="w-full h-full object-cover transition-all duration-700 opacity-60 mix-blend-overlay grayscale group-hover:grayscale-0" 
+                    src="https://img.youtube.com/vi/vX-inQa3MKk/maxresdefault.jpg"
+                  />
+                </>
+              )}
             </div>
           </div>
         </section>
