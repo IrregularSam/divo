@@ -269,7 +269,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Organized developer workshops and onboarding sessions with Web3 Nigeria and Onchain Society.',
       'Focused on education, adoption, and on-chain participation.'
     ],
-    logo: 'https://api.dicebear.com/7.x/initials/svg?seed=Vara&backgroundColor=000000&fontFamily=Space+Grotesk&fontWeight=700'
+    logo: 'https://vara.network/favicon.ico'
   },
   {
     period: '2023 - PRESENT',
@@ -281,7 +281,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Live product with ongoing work on messaging and ecosystem visibility.',
       'Managed all user-facing educational materials.'
     ],
-    logo: 'https://api.dicebear.com/7.x/initials/svg?seed=VN&backgroundColor=00ffa3&fontFamily=Space+Grotesk&fontWeight=700'
+    logo: 'https://vns.vara.network/favicon.ico'
   },
   {
     period: '2024 - PRESENT',
@@ -293,7 +293,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Part of a curated Solana-native creator cohort.',
       'Produced high-fidelity technical breakdowns for the Solana ecosystem.'
     ],
-    logo: 'https://api.dicebear.com/7.x/initials/svg?seed=Kamino&backgroundColor=6366f1&fontFamily=Space+Grotesk&fontWeight=700'
+    logo: 'https://app.kamino.finance/favicon.ico'
   },
   {
     period: '2023 - PRESENT',
@@ -305,7 +305,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Helped users understand security practices and on-chain interactions.',
       'Active advocate for the Solana community.'
     ],
-    logo: 'https://api.dicebear.com/7.x/initials/svg?seed=Solflare&backgroundColor=f59e0b&fontFamily=Space+Grotesk&fontWeight=700'
+    logo: 'https://solflare.com/favicon.ico'
   },
   {
     period: '2023 - PRESENT',
@@ -317,7 +317,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Contributed to creator-led growth across African Web3.',
       'Developed ecosystem education and visibility initiatives.'
     ],
-    logo: 'https://api.dicebear.com/7.x/initials/svg?seed=ST&backgroundColor=8b5cf6&fontFamily=Space+Grotesk&fontWeight=700'
+    logo: 'https://superteam.fun/favicon.ico'
   },
   {
     period: '2024 - PRESENT',
@@ -329,7 +329,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Improved product positioning through structured storytelling.',
       'Led the communication strategy for new feature launches.'
     ],
-    logo: 'https://api.dicebear.com/7.x/initials/svg?seed=BL&backgroundColor=ec4899&fontFamily=Space+Grotesk&fontWeight=700'
+    logo: 'https://balooga.bet/favicon.ico'
   },
   {
     period: 'PAST ROLE',
@@ -341,17 +341,17 @@ export const EXPERIENCE: WorkExperience[] = [
       'Strengthened product value communication to the community.',
       'Boosted ecosystem visibility through consistent engagement.'
     ],
-    logo: 'https://api.dicebear.com/7.x/initials/svg?seed=NA&backgroundColor=1e293b&fontFamily=Space+Grotesk&fontWeight=700'
+    logo: 'https://www.nesa.ai/favicon.ico'
   }
 ];
 
 export const PORTFOLIO: PortfolioItem[] = [
-  { title: 'Vara Network Intro', thumbnail: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800' },
-  { title: 'VaraNames Explained', thumbnail: 'https://images.unsplash.com/photo-1642104704074-907c0698cbd9?auto=format&fit=crop&q=80&w=800' },
-  { title: 'DeFi Education Series', thumbnail: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=800' },
-  { title: 'Event Recap: ETH Safari', thumbnail: 'https://images.unsplash.com/photo-1540575467063-178a50c2df88?auto=format&fit=crop&q=80&w=800' },
-  { title: 'Technical Breakdown', thumbnail: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800' },
-  { title: 'Community Highlights', thumbnail: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800' },
+  { title: 'The Future of AI x Web3', thumbnail: 'https://img.youtube.com/vi/6uT9B99U73M/maxresdefault.jpg' },
+  { title: 'Solana Ecosystem Deep Dive', thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg' },
+  { title: 'Building the Next Big Thing', thumbnail: 'https://img.youtube.com/vi/XjZp6wWq7nI/maxresdefault.jpg' },
+  { title: 'Content Strategy for Web3', thumbnail: 'https://img.youtube.com/vi/8rG6v0q5_Vw/maxresdefault.jpg' },
+  { title: 'Creator Economy 2.0', thumbnail: 'https://img.youtube.com/vi/h2H0f_fT4wA/maxresdefault.jpg' },
+  { title: 'Market Trends 2025', thumbnail: 'https://img.youtube.com/vi/j5-N-X_v00c/maxresdefault.jpg' },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -364,12 +364,11 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const TOOLS = [
-  { name: 'Premiere Pro', category: 'Video Editing', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=Pr&backgroundColor=00005b&textColor=ffffff' },
-  { name: 'After Effects', category: 'Motion Graphics', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=Ae&backgroundColor=00005b&textColor=ffffff' },
-  { name: 'Figma', category: 'UI/UX Design', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=F&backgroundColor=f24e1e&textColor=ffffff' },
-  { name: 'Photoshop', category: 'Image Manipulation', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=Ps&backgroundColor=001e36&textColor=ffffff' },
-  { name: 'CapCut', category: 'Short-Form Video', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=CC&backgroundColor=000000&textColor=ffffff' },
-  { name: 'Notion', category: 'Project Management', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=N&backgroundColor=ffffff&textColor=000000' },
+  { name: 'Premiere Pro', category: 'Video Editing', icon: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg' },
+  { name: 'After Effects', category: 'Motion Graphics', icon: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg' },
+  { name: 'Figma', category: 'UI/UX Design', icon: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
+  { name: 'Notion', category: 'Knowledge Management', icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg' },
+  { name: 'CapCut', category: 'Short-Form Video', icon: 'https://www.capcut.com/favicon.ico' },
   { name: 'AI Suite', category: 'GenAI & Automation', icon: 'sparkles' },
   { name: 'Workspace', category: 'Collaboration', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=G&backgroundColor=4285f4&textColor=ffffff' },
 ];

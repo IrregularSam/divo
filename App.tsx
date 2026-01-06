@@ -21,7 +21,11 @@ import {
   Cpu,
   Layers,
   Box as BoxIcon,
-  ChevronDown
+  ChevronDown,
+  MessageCircle,
+  Send,
+  Twitter,
+  Mail
 } from 'lucide-react';
 import { 
   SERVICES, 
@@ -57,7 +61,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-[60] px-4 w-full max-w-xl">
-      <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-full px-2 py-2 flex items-center justify-between shadow-2xl transition-all duration-300">
+      <div className="bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border border-white/20 dark:border-slate-800/50 rounded-full px-2 py-2 flex items-center justify-between shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all duration-300">
         <div className="flex items-center gap-1 md:gap-2 px-2 overflow-x-auto no-scrollbar">
           {[
             { name: 'Home', id: 'hero' },
@@ -71,7 +75,7 @@ const Navbar: React.FC = () => {
               onClick={() => scrollToSection(item.id)}
               className={`px-3 py-1.5 text-xs md:text-sm font-medium rounded-full transition-all whitespace-nowrap ${
                 active === item.id 
-                  ? 'bg-primary text-white shadow-lg' 
+                  ? 'bg-primary/80 text-white shadow-lg backdrop-blur-md' 
                   : 'text-slate-600 dark:text-slate-300 hover:text-primary'
               }`}
             >
@@ -81,7 +85,7 @@ const Navbar: React.FC = () => {
         </div>
         <button 
           onClick={() => scrollToSection('contact')}
-          className="bg-primary text-white rounded-full px-6 py-2 text-sm font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all"
+          className="bg-primary/80 text-white rounded-full px-6 py-2 text-sm font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all backdrop-blur-md"
         >
           Contact
         </button>
@@ -289,7 +293,27 @@ const CaseStudyModal: React.FC<{ study: CaseStudy; onClose: () => void }> = ({ s
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
-  const [isHeroPlaying, setIsHeroPlaying] = useState(false);
+  const [isHeroPlaying, setIsHeroPlaying] = useState(true);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsHeroPlaying(false);
+        } else {
+          setIsHeroPlaying(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    const heroSection = document.getElementById('hero');
+    if (heroSection) observer.observe(heroSection);
+
+    return () => {
+      if (heroSection) observer.unobserve(heroSection);
+    };
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -332,31 +356,19 @@ const App: React.FC = () => {
           </p>
           <div className="tilt-container max-w-5xl mx-auto">
             <div className={`relative w-full aspect-video bg-surface-light dark:bg-surface-dark rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden group glow-box tilt-card ${isHeroPlaying ? 'no-tilt' : ''}`}>
-              {isHeroPlaying ? (
-                <iframe
-                  src="https://www.youtube.com/embed/vX-inQa3MKk?autoplay=1"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full border-0"
-                ></iframe>
-              ) : (
-                <>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-purple-500/10 opacity-50"></div>
-                  <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <button 
-                      onClick={() => setIsHeroPlaying(true)}
-                      className="w-24 h-24 rounded-full glass border border-white/20 text-white flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary/40 group-hover:bg-primary/90"
-                    >
-                      <Play size={36} fill="white" className="ml-1" />
-                    </button>
-                  </div>
-                  <img 
-                    alt="Hero Visual" 
-                    className="w-full h-full object-cover transition-all duration-700 opacity-60 mix-blend-overlay grayscale group-hover:grayscale-0" 
-                    src="https://img.youtube.com/vi/vX-inQa3MKk/maxresdefault.jpg"
-                  />
-                </>
+              <iframe
+                src={`https://www.youtube.com/embed/vX-inQa3MKk?autoplay=1&mute=1&loop=1&playlist=vX-inQa3MKk&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className={`absolute inset-0 w-full h-full border-0 pointer-events-none transition-opacity duration-500 ${isHeroPlaying ? 'opacity-100' : 'opacity-0'}`}
+              ></iframe>
+              {!isHeroPlaying && (
+                <img 
+                  alt="Hero Visual" 
+                  className="w-full h-full object-cover transition-all duration-700 opacity-60 mix-blend-overlay grayscale" 
+                  src="https://img.youtube.com/vi/vX-inQa3MKk/maxresdefault.jpg"
+                />
               )}
             </div>
           </div>
