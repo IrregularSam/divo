@@ -381,7 +381,7 @@ const App: React.FC = () => {
               <img 
                 alt="Divo Portrait" 
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-all duration-700" 
-                src="https://api.dicebear.com/7.x/avataaars/svg?seed=Divo&accessories=sunglasses&top=shortHair&clothing=hoodie&clothingColor=3d4e5c&backgroundColor=0f172a"
+                src="/attached_assets/New_PFP_1767738004126.jpg"
               />
             </div>
           </div>
