@@ -346,21 +346,12 @@ export const EXPERIENCE: WorkExperience[] = [
 ];
 
 export const PORTFOLIO: PortfolioItem[] = [
-  { title: 'The Future of AI x Web3', thumbnail: 'https://img.youtube.com/vi/6uT9B99U73M/maxresdefault.jpg' },
-  { title: 'Solana Ecosystem Deep Dive', thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg' },
-  { title: 'Building the Next Big Thing', thumbnail: 'https://img.youtube.com/vi/XjZp6wWq7nI/maxresdefault.jpg' },
-  { title: 'Content Strategy for Web3', thumbnail: 'https://img.youtube.com/vi/8rG6v0q5_Vw/maxresdefault.jpg' },
-  { title: 'Creator Economy 2.0', thumbnail: 'https://img.youtube.com/vi/h2H0f_fT4wA/maxresdefault.jpg' },
-  { title: 'Market Trends 2025', thumbnail: 'https://img.youtube.com/vi/j5-N-X_v00c/maxresdefault.jpg' },
-];
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote: "I design motion graphics and static visuals that support product storytelling and marketing communication.",
-    author: "Johnson, CEO BUIO",
-    role: "Fintech Partner",
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Johnson'
-  },
+  { title: 'AI x Web3: The Future', thumbnail: 'https://img.youtube.com/vi/6uT9B99U73M/maxresdefault.jpg' },
+  { title: 'The Solana Narrative', thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg' },
+  { title: 'Building Protocol Gravity', thumbnail: 'https://img.youtube.com/vi/XjZp6wWq7nI/maxresdefault.jpg' },
+  { title: 'Content Systems for Scale', thumbnail: 'https://img.youtube.com/vi/8rG6v0q5_Vw/maxresdefault.jpg' },
+  { title: 'Web3 Growth Strategies', thumbnail: 'https://img.youtube.com/vi/h2H0f_fT4wA/maxresdefault.jpg' },
+  { title: 'Market Sentiment 2025', thumbnail: 'https://img.youtube.com/vi/j5-N-X_v00c/maxresdefault.jpg' },
 ];
 
 export const TOOLS = [
@@ -370,7 +361,7 @@ export const TOOLS = [
   { name: 'Notion', category: 'Knowledge Management', icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg' },
   { name: 'CapCut', category: 'Short-Form Video', icon: 'https://www.capcut.com/favicon.ico' },
   { name: 'AI Suite', category: 'GenAI & Automation', icon: 'sparkles' },
-  { name: 'Workspace', category: 'Collaboration', icon: 'https://api.dicebear.com/7.x/initials/svg?seed=G&backgroundColor=4285f4&textColor=ffffff' },
+  { name: 'Workspace', category: 'Collaboration', icon: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Icons_2020.svg' },
 ];
 
 export const MARQUEE_TAGS = [

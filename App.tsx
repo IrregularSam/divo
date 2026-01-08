@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-[60] px-4 w-full max-w-xl">
-      <div className="bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border border-white/20 dark:border-slate-800/50 rounded-full px-2 py-2 flex items-center justify-between shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all duration-300">
+      <div className="bg-white/10 dark:bg-slate-950/20 backdrop-blur-2xl border border-white/10 dark:border-slate-800/30 rounded-full px-2 py-2 flex items-center justify-between shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-300">
         <div className="flex items-center gap-1 md:gap-2 px-2 overflow-x-auto no-scrollbar">
           {[
             { name: 'Home', id: 'hero' },
