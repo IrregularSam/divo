@@ -594,7 +594,7 @@ const App: React.FC = () => {
           </div>
           
           <button className="bg-primary hover:bg-indigo-500 text-white font-bold py-6 px-20 rounded-full text-xl shadow-2xl shadow-primary/40 transition-all mb-32 transform hover:-translate-y-2 uppercase tracking-widest">
-            Contact Us
+            Contact Me
           </button>
 
           <div className="w-full overflow-hidden bg-primary py-5 -mx-6 md:-mx-0 md:rounded-2xl mb-12 shadow-2xl shadow-primary/30 relative">
