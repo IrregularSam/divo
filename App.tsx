@@ -598,16 +598,40 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* Footer - Restored Original Text */}
+        {/* Footer - Updated Design */}
         <footer id="contact" className="text-center pt-24 scroll-mt-32">
           <div className="mb-20">
             <h2 className="text-4xl md:text-7xl font-display font-bold mb-2 uppercase tracking-tighter text-slate-900 dark:text-white">Let's Create <span className="text-primary">Something</span></h2>
             <h2 className="text-4xl md:text-7xl font-display font-bold text-primary uppercase tracking-tighter">Amazing Together</h2>
           </div>
           
-          <button className="bg-primary hover:bg-indigo-500 text-white font-bold py-6 px-20 rounded-full text-xl shadow-2xl shadow-primary/40 transition-all mb-32 transform hover:-translate-y-2 uppercase tracking-widest">
-            Contact Me
-          </button>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-32">
+            {/* Discord */}
+            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+              <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
+            </a>
+
+            {/* Telegram */}
+            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+              <Send size={24} className="group-hover:scale-110 transition-transform" />
+            </a>
+
+            {/* Contact Me Button */}
+            <button className="bg-[#6366f1] text-white px-12 py-5 rounded-full font-bold text-lg flex items-center gap-4 hover:scale-105 transition-all shadow-xl shadow-indigo-500/20 group uppercase tracking-widest border border-white/10">
+              CONTACT ME
+              <ArrowRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform rotate-[-45deg]" />
+            </button>
+
+            {/* Twitter */}
+            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+              <Twitter size={24} className="group-hover:scale-110 transition-transform" />
+            </a>
+
+            {/* Mail */}
+            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+              <Mail size={24} className="group-hover:scale-110 transition-transform" />
+            </a>
+          </div>
 
           <div className="w-full overflow-hidden bg-primary py-5 -mx-6 md:-mx-0 md:rounded-2xl mb-12 shadow-2xl shadow-primary/30 relative">
             <div className="whitespace-nowrap animate-marquee flex items-center gap-16 text-white font-display font-bold text-sm uppercase tracking-widest">
