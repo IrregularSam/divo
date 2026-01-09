@@ -403,8 +403,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   { 
     title: "Why Your Content Isn't Getting Views", 
-    thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/W_M-z_W_K2k'
+    thumbnail: 'https://img.youtube.com/vi/vX-inQa3MKk/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/vX-inQa3MKk'
   },
   { 
     title: 'Why Most Creators Fail in 2024', 
