@@ -341,7 +341,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Strengthened product value communication to the community.',
       'Boosted ecosystem visibility through consistent engagement.'
     ],
-    logo: 'https://www.nesa.ai/favicon.ico'
+    logo: '/logos/nesa.png'
   }
 ];
 
