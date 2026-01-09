@@ -600,11 +600,11 @@ const App: React.FC = () => {
               <div key={index} className="group relative tilt-container">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-purple-600 rounded-[2rem] blur opacity-0 group-hover:opacity-20 transition duration-500"></div>
                 <div className="relative h-full bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/60 p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center tilt-card">
-                  <div className="w-16 h-16 mb-8 flex items-center justify-center p-3 rounded-2xl glass border border-slate-100 dark:border-slate-800">
+                  <div className="w-16 h-16 mb-8 flex items-center justify-center p-3 rounded-2xl glass border border-slate-100 dark:border-slate-800 overflow-hidden">
                     {tool.icon === 'sparkles' ? (
                       <Sparkles size={32} className="text-primary animate-pulse" />
                     ) : (
-                      <img src={tool.icon} alt={tool.name} className="w-full h-full object-contain" />
+                      <img src={tool.icon} alt={tool.name} className="w-full h-full object-contain rounded-lg" />
                     )}
                   </div>
                   <h3 className="text-xl font-bold font-display group-hover:text-primary transition-colors text-slate-900 dark:text-white">{tool.name}</h3>

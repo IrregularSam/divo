@@ -420,7 +420,7 @@ export const TOOLS = [
   { name: 'Notion', category: 'Knowledge Management', icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg' },
   { name: 'CapCut', category: 'Short-Form Video', icon: '/logos/capcut.png' },
   { name: 'AI Suite', category: 'GenAI & Automation', icon: 'sparkles' },
-  { name: 'Workspace', category: 'Collaboration', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Workspace_icon_%282020%29.svg' },
+  { name: 'Workspace', category: 'Collaboration', icon: '/logos/workspace.png' },
 ];
 
 export const MARQUEE_TAGS = [
