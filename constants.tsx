@@ -403,8 +403,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   { 
     title: "Why Your Content Isn't Getting Views", 
-    thumbnail: 'https://img.youtube.com/vi/7u7u_n-T-sQ/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/7u7u_n-T-sQ'
+    thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/W_M-z_W_K2k'
   },
   { 
     title: 'Why Most Creators Fail in 2024', 
@@ -418,9 +418,9 @@ export const TOOLS = [
   { name: 'After Effects', category: 'Motion Graphics', icon: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg' },
   { name: 'Figma', category: 'UI/UX Design', icon: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
   { name: 'Notion', category: 'Knowledge Management', icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg' },
-  { name: 'CapCut', category: 'Short-Form Video', icon: 'https://www.capcut.com/favicon.ico' },
+  { name: 'CapCut', category: 'Short-Form Video', icon: '/logos/capcut.png' },
   { name: 'AI Suite', category: 'GenAI & Automation', icon: 'sparkles' },
-  { name: 'Workspace', category: 'Collaboration', icon: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Icons_2020.svg' },
+  { name: 'Workspace', category: 'Collaboration', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Workspace_icon_%282020%29.svg' },
 ];
 
 export const MARQUEE_TAGS = [
