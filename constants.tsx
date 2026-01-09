@@ -317,7 +317,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Contributed to creator-led growth across African Web3.',
       'Developed ecosystem education and visibility initiatives.'
     ],
-    logo: 'https://superteam.fun/favicon.ico'
+    logo: '/logos/superteam_ng.png'
   },
   {
     period: '2024 - PRESENT',
@@ -329,7 +329,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Improved product positioning through structured storytelling.',
       'Led the communication strategy for new feature launches.'
     ],
-    logo: 'https://balooga.bet/favicon.ico'
+    logo: '/logos/balooga.png'
   },
   {
     period: 'PAST ROLE',
