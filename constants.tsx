@@ -105,8 +105,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       ]
     },
     mediaGallery: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&q=80&w=800', caption: 'Visual representation of information flow' },
-      { type: 'image', url: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800', caption: 'Data curation dashboard' }
+      { type: 'video', url: 'https://www.youtube.com/embed/vX-inQa3MKk', caption: 'Ecosystem Analysis Video' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&q=80&w=800', caption: 'Visual representation of information flow' }
     ],
     comprehensiveExecution: 'Our team developed a custom monitoring stack watching over 150 primary sources including Discord developer channels, GitHub repositories, and governance forums. We moved beyond simple aggregation; we performed contextual synthesis. For every infra change, we answered: "Why does this matter for the user?". The execution required a 24/7 rotational shift to ensure no critical "breaking" news was missed, resulting in a perfectly unbroken streak of high-value daily reporting.',
     impactReport: {
@@ -149,8 +149,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       ]
     },
     mediaGallery: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1611974714658-dd47245bd611?auto=format&fit=crop&q=80&w=800', caption: 'DeFi visual analytics' },
-      { type: 'image', url: 'https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&q=80&w=800', caption: 'Staking yield comparisons' }
+      { type: 'video', url: 'https://www.youtube.com/embed/6uT9B99U73M', caption: 'DeFi Education Spotlight' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1611974714658-dd47245bd611?auto=format&fit=crop&q=80&w=800', caption: 'DeFi visual analytics' }
     ],
     comprehensiveExecution: 'We developed a content calendar that moved from "Passive Yield" (Day 1-10) to "Composability" (Day 11-20) and finally to "Governance & Security" (Day 21-30). Each post was accompanied by a custom visual asset that simplified the underlying code into a user benefit. We also monitored sentiment daily, pivoting our messaging on Day 15 to address specific community fears regarding smart contract risk.',
     impactReport: {
@@ -193,8 +193,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       ]
     },
     mediaGallery: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800', caption: 'Infrastructure node network' },
-      { type: 'image', url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800', caption: 'Digital connectivity' }
+      { type: 'video', url: 'https://www.youtube.com/embed/W_M-z_W_K2k', caption: 'Product Walkthrough' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800', caption: 'Infrastructure node network' }
     ],
     comprehensiveExecution: 'We produced 12 deep-dive technical threads and 8 UGC-style videos. Each piece of content was designed to be modular—able to be used by the customer support team as a response to common user questions. We turned the content into a living FAQ that built trust through transparency.',
     impactReport: {
@@ -237,8 +237,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       ]
     },
     mediaGallery: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800', caption: 'Local developer workshop session' },
-      { type: 'image', url: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=800', caption: 'Community networking event' }
+      { type: 'video', url: 'https://www.youtube.com/embed/XjZp6wWq7nI', caption: 'Regional Strategy Overview' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800', caption: 'Local developer workshop session' }
     ],
     comprehensiveExecution: 'We launched a 3-city workshop tour combined with a digital "Bootcamp" series. We managed local Discord and Telegram channels with a focus on technical support, ensuring no developer question went unanswered for more than 4 hours. We acted as the bridge between the global core team and the local reality.',
     impactReport: {
@@ -346,12 +346,36 @@ export const EXPERIENCE: WorkExperience[] = [
 ];
 
 export const PORTFOLIO: PortfolioItem[] = [
-  { title: 'AI x Web3: The Future', thumbnail: 'https://img.youtube.com/vi/6uT9B99U73M/maxresdefault.jpg' },
-  { title: 'The Solana Narrative', thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg' },
-  { title: 'Building Protocol Gravity', thumbnail: 'https://img.youtube.com/vi/XjZp6wWq7nI/maxresdefault.jpg' },
-  { title: 'Content Systems for Scale', thumbnail: 'https://img.youtube.com/vi/8rG6v0q5_Vw/maxresdefault.jpg' },
-  { title: 'Web3 Growth Strategies', thumbnail: 'https://img.youtube.com/vi/h2H0f_fT4wA/maxresdefault.jpg' },
-  { title: 'Market Sentiment 2025', thumbnail: 'https://img.youtube.com/vi/j5-N-X_v00c/maxresdefault.jpg' },
+  { 
+    title: 'AI x Web3: The Future', 
+    thumbnail: 'https://img.youtube.com/vi/6uT9B99U73M/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/6uT9B99U73M'
+  },
+  { 
+    title: 'The Solana Narrative', 
+    thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/W_M-z_W_K2k'
+  },
+  { 
+    title: 'Building Protocol Gravity', 
+    thumbnail: 'https://img.youtube.com/vi/XjZp6wWq7nI/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/XjZp6wWq7nI'
+  },
+  { 
+    title: 'Content Systems for Scale', 
+    thumbnail: 'https://img.youtube.com/vi/8rG6v0q5_Vw/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/8rG6v0q5_Vw'
+  },
+  { 
+    title: 'Web3 Growth Strategies', 
+    thumbnail: 'https://img.youtube.com/vi/h2H0f_fT4wA/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/h2H0f_fT4wA'
+  },
+  { 
+    title: 'Market Sentiment 2025', 
+    thumbnail: 'https://img.youtube.com/vi/j5-N-X_v00c/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/j5-N-X_v00c'
+  },
 ];
 
 export const TOOLS = [

@@ -23,6 +23,7 @@ export interface WorkExperience {
 export interface PortfolioItem {
   title: string;
   thumbnail: string;
+  videoUrl?: string;
 }
 
 export interface Testimonial {
