@@ -540,34 +540,51 @@ const App: React.FC = () => {
           <div className="max-h-[600px] overflow-y-auto pr-6 portfolio-v-scroll rounded-[2.5rem] bg-slate-950/20 p-4 border border-slate-200 dark:border-slate-800">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Multiplying items to ensure a long list that requires scrolling */}
-              {[...PORTFOLIO, ...PORTFOLIO, ...PORTFOLIO].map((item, idx) => (
-                <div key={idx} className="group tilt-container">
-                  <div className="relative aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl tilt-card">
-                    {item.videoUrl ? (
-                      <iframe
-                        src={`${item.videoUrl}?autoplay=0&mute=1&rel=0&modestbranding=1`}
-                        title={item.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="absolute inset-0 w-full h-full border-0"
-                      ></iframe>
-                    ) : (
-                      <>
-                        <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
-                        <div className="absolute inset-0 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity">
-                          <div className="w-20 h-20 rounded-full glass border border-white/20 flex items-center justify-center">
-                            <Play size={32} fill="white" className="ml-1.5" />
+              {[...PORTFOLIO].map((item, idx) => {
+                const [isHovered, setIsHovered] = useState(false);
+                return (
+                  <div 
+                    key={idx} 
+                    className="group tilt-container"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    <div className="relative aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl tilt-card">
+                      {item.videoUrl ? (
+                        <>
+                          <img 
+                            src={item.thumbnail} 
+                            alt={item.title} 
+                            className={`w-full h-full object-cover transition-opacity duration-500 ${isHovered ? 'opacity-0' : 'opacity-50 group-hover:opacity-90'}`} 
+                          />
+                          {isHovered && (
+                            <iframe
+                              src={`${item.videoUrl}?autoplay=1&mute=1&rel=0&modestbranding=1&controls=0`}
+                              title={item.title}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              className="absolute inset-0 w-full h-full border-0"
+                            ></iframe>
+                          )}
+                        </>
+                      ) : (
+                        <>
+                          <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity">
+                            <div className="w-20 h-20 rounded-full glass border border-white/20 flex items-center justify-center">
+                              <Play size={32} fill="white" className="ml-1.5" />
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    )}
-                    <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none">
-                      <p className="text-white font-display font-bold text-xl uppercase tracking-tight">{item.title}</p>
-                      <p className="text-white/60 text-[10px] mt-2 font-medium tracking-widest uppercase">Video Production • {idx + 1}</p>
+                        </>
+                      )}
+                      <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none">
+                        <p className="text-white font-display font-bold text-xl uppercase tracking-tight">{item.title}</p>
+                        <p className="text-white/60 text-[10px] mt-2 font-medium tracking-widest uppercase">Video Production • {idx + 1}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

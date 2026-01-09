@@ -347,34 +347,69 @@ export const EXPERIENCE: WorkExperience[] = [
 
 export const PORTFOLIO: PortfolioItem[] = [
   { 
-    title: 'AI x Web3: The Future', 
-    thumbnail: 'https://img.youtube.com/vi/6uT9B99U73M/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/6uT9B99U73M'
+    title: 'How To Become A Master Storyteller', 
+    thumbnail: 'https://img.youtube.com/vi/t5Z-Q1bg1tU/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/t5Z-Q1bg1tU'
   },
   { 
-    title: 'The Solana Narrative', 
-    thumbnail: 'https://img.youtube.com/vi/W_M-z_W_K2k/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/W_M-z_W_K2k'
+    title: 'How I Grew from 0 to 100K Subscribers in 5 Months', 
+    thumbnail: 'https://img.youtube.com/vi/3y-WiiUaqb4/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/3y-WiiUaqb4'
   },
   { 
-    title: 'Building Protocol Gravity', 
-    thumbnail: 'https://img.youtube.com/vi/XjZp6wWq7nI/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/XjZp6wWq7nI'
+    title: 'How I Got 46 Million Views From ONE Short-Form Video', 
+    thumbnail: 'https://img.youtube.com/vi/VEcU_VnlX7c/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/VEcU_VnlX7c'
   },
   { 
-    title: 'Content Systems for Scale', 
-    thumbnail: 'https://img.youtube.com/vi/8rG6v0q5_Vw/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/8rG6v0q5_Vw'
+    title: 'Give me 18 minutes, and I’ll improve your video by 193%', 
+    thumbnail: 'https://img.youtube.com/vi/i7upRL4H1FM/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/i7upRL4H1FM'
   },
   { 
-    title: 'Web3 Growth Strategies', 
-    thumbnail: 'https://img.youtube.com/vi/h2H0f_fT4wA/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/h2H0f_fT4wA'
+    title: 'How to Master the Art of Speaking', 
+    thumbnail: 'https://img.youtube.com/vi/35SPFdc1eXY/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/35SPFdc1eXY'
   },
   { 
-    title: 'Market Sentiment 2025', 
-    thumbnail: 'https://img.youtube.com/vi/j5-N-X_v00c/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/j5-N-X_v00c'
+    title: 'I Tested 100+ AI Tools, These 9 Will Blow Up Your Content', 
+    thumbnail: 'https://img.youtube.com/vi/_SpyH8wTA-4/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/_SpyH8wTA-4'
+  },
+  { 
+    title: 'How to Create Any Content 10x Faster With AI', 
+    thumbnail: 'https://img.youtube.com/vi/1q__Vs2JqbI/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/1q__Vs2JqbI'
+  },
+  { 
+    title: 'Scientists just invented a new way to make videos with AI', 
+    thumbnail: 'https://img.youtube.com/vi/_OWTCNMBS18/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/_OWTCNMBS18'
+  },
+  { 
+    title: 'The latest humanoid robots are starting to feel like Black Mirror', 
+    thumbnail: 'https://img.youtube.com/vi/03ouiRN5RaQ/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/03ouiRN5RaQ'
+  },
+  { 
+    title: 'This is the god-tier AI tool for building an ecom brand', 
+    thumbnail: 'https://img.youtube.com/vi/gY4RStb0pnI/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/gY4RStb0pnI'
+  },
+  { 
+    title: 'OpenAI just launched their own social platform', 
+    thumbnail: 'https://img.youtube.com/vi/4shKz-CsqDw/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/4shKz-CsqDw'
+  },
+  { 
+    title: "Why Your Content Isn't Getting Views", 
+    thumbnail: 'https://img.youtube.com/vi/7u7u_n-T-sQ/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/7u7u_n-T-sQ'
+  },
+  { 
+    title: 'Why Most Creators Fail in 2024', 
+    thumbnail: 'https://img.youtube.com/vi/tVZOS5Z019U/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/tVZOS5Z019U'
   },
 ];
 
