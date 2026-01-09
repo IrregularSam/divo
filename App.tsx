@@ -426,7 +426,7 @@ const App: React.FC = () => {
               <div key={idx} className="bg-surface-light dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-primary/30 transition-all duration-500 group relative flex flex-col h-full tilt-container">
                 <div className="tilt-card flex flex-col h-full">
                   <div className="flex items-start justify-between mb-8">
-                    <div className="w-20 h-20 rounded-[1.5rem] glass border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform overflow-hidden flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-[1.5rem] glass border border-slate-100 dark:border-slate-800 p-3 group-hover:scale-110 transition-transform overflow-hidden flex items-center justify-center">
                       <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover rounded-[1.2rem]" />
                     </div>
                     <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] px-4 py-1.5 bg-primary/5 rounded-full border border-primary/10">
