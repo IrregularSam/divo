@@ -281,7 +281,7 @@ export const EXPERIENCE: WorkExperience[] = [
       'Live product with ongoing work on messaging and ecosystem visibility.',
       'Managed all user-facing educational materials.'
     ],
-    logo: 'https://vns.vara.network/favicon.ico'
+    logo: '/logos/vns.png'
   },
   {
     period: '2024 - PRESENT',
