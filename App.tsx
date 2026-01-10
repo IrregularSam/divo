@@ -534,7 +534,7 @@ const App: React.FC = () => {
             </p>
           </div>
           
-          <div className="relative group">
+          <div className="relative group overflow-x-auto no-scrollbar scroll-smooth">
             <div className="flex animate-scroll hover:pause flex-nowrap gap-6 px-6">
               {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
                 <div 
