@@ -25,8 +25,7 @@ import {
   MessageCircle,
   Send,
   Twitter,
-  Mail,
-  Disc as DiscordIcon
+  Mail
 } from 'lucide-react';
 import { 
   SERVICES, 
@@ -296,6 +295,46 @@ const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [isHeroPlaying, setIsHeroPlaying] = useState(true);
+  const testimonialRef = React.useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [resumeTimer, setResumeTimer] = useState<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const container = testimonialRef.current;
+    if (!container) return;
+
+    let animationFrameId: number;
+    let lastTime = 0;
+    const speed = 0.8; // pixels per frame (very slow, ambient)
+
+    const scroll = () => {
+      if (!isPaused && container) {
+        container.scrollLeft += speed;
+        
+        // Infinite loop: if we've scrolled past the first half, reset to the start
+        // Using half because we duplicated the items
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused]);
+
+  const handleInteractionStart = () => {
+    setIsPaused(true);
+    if (resumeTimer) clearTimeout(resumeTimer);
+  };
+
+  const handleInteractionEnd = () => {
+    const timer = setTimeout(() => {
+      setIsPaused(false);
+    }, 2000); // Resume after 2 seconds
+    setResumeTimer(timer);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -535,32 +574,44 @@ const App: React.FC = () => {
             </p>
           </div>
           
-          <div className="relative group overflow-hidden">
-            <div className="flex animate-scroll hover:pause flex-nowrap gap-6 px-6">
-              {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
-                <div 
-                  key={`${testimonial.id}-${idx}`}
-                  className="w-[320px] md:w-[380px] shrink-0 p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-white/[0.08] hover:border-primary/30 group/card"
-                >
-                  <div className="flex items-center gap-4 mb-6">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      className="w-10 h-10 rounded-full object-cover border border-white/20"
-                    />
-                    <div>
-                      <h4 className="font-bold text-slate-900 dark:text-white">{testimonial.name}</h4>
-                      <p className="text-xs text-slate-500 uppercase tracking-widest">
-                        {testimonial.role} <span className="text-primary/70">@ {testimonial.company}</span>
-                      </p>
-                    </div>
+          <div 
+            ref={testimonialRef}
+            onMouseEnter={handleInteractionStart}
+            onMouseLeave={handleInteractionEnd}
+            onTouchStart={handleInteractionStart}
+            onTouchEnd={handleInteractionEnd}
+            onScroll={(e) => {
+              const target = e.target as HTMLDivElement;
+              // Reset seamless loop even during manual scroll
+              if (target.scrollLeft >= target.scrollWidth / 2) {
+                target.scrollLeft = 0;
+              }
+            }}
+            className="relative group overflow-x-auto no-scrollbar flex flex-nowrap gap-6 px-6 cursor-grab active:cursor-grabbing"
+          >
+            {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
+              <div 
+                key={`${testimonial.id}-${idx}`}
+                className="w-[320px] md:w-[380px] shrink-0 p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-white/[0.08] hover:border-primary/30 group/card"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name} 
+                    className="w-10 h-10 rounded-full object-cover border border-white/20"
+                  />
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white">{testimonial.name}</h4>
+                    <p className="text-xs text-slate-500 uppercase tracking-widest">
+                      {testimonial.role} <span className="text-primary/70">@ {testimonial.company}</span>
+                    </p>
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic text-sm md:text-base">
-                    "{testimonial.text}"
-                  </p>
                 </div>
-              ))}
-            </div>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic text-sm md:text-base">
+                  "{testimonial.text}"
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -665,7 +716,7 @@ const App: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-32">
             {/* Discord */}
             <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
-              <img src="/logos/discord_outline.png" alt="Discord" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform brightness-0 invert opacity-70 group-hover:opacity-100" />
+              <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Telegram */}
