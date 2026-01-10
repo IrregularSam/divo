@@ -534,9 +534,9 @@ const App: React.FC = () => {
             </p>
           </div>
           
-          <div className="relative group overflow-x-auto no-scrollbar scroll-smooth">
+          <div className="relative group overflow-hidden">
             <div className="flex animate-scroll hover:pause flex-nowrap gap-6 px-6">
-              {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
+              {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
                 <div 
                   key={`${testimonial.id}-${idx}`}
                   className="w-[320px] md:w-[380px] shrink-0 p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-white/[0.08] hover:border-primary/30 group/card"
