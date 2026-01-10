@@ -397,14 +397,15 @@ const App: React.FC = () => {
           </p>
           <div className="tilt-container max-w-5xl mx-auto">
             <div className={`relative w-full aspect-video bg-surface-light dark:bg-surface-dark rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden group glow-box tilt-card ${isHeroPlaying ? 'no-tilt' : ''}`}>
-              <iframe
-                src={`https://www.youtube.com/embed/vX-inQa3MKk?autoplay=1&mute=1&loop=1&playlist=vX-inQa3MKk&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className={`absolute inset-0 w-full h-full border-0 pointer-events-none transition-opacity duration-500 ${isHeroPlaying ? 'opacity-100' : 'opacity-0'}`}
-              ></iframe>
-              {!isHeroPlaying && (
+              {isHeroPlaying ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/vX-inQa3MKk?autoplay=1&mute=0&loop=1&playlist=vX-inQa3MKk&controls=1&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-0 transition-opacity duration-500 opacity-100"
+                ></iframe>
+              ) : (
                 <img 
                   alt="Hero Visual" 
                   className="w-full h-full object-cover transition-all duration-700 opacity-60 mix-blend-overlay grayscale" 
