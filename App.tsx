@@ -665,7 +665,7 @@ const App: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-32">
             {/* Discord */}
             <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
-              <DiscordIcon size={24} className="group-hover:scale-110 transition-transform" />
+              <img src="/logos/discord_outline.png" alt="Discord" className="w-6 h-6 object-contain group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Telegram */}
