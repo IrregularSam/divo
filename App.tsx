@@ -484,7 +484,7 @@ const App: React.FC = () => {
         </section>
 
         {/* Case Studies */}
-        <section id="casestudies" className="mb-48 scroll-mt-32">
+        <section id="casestudies" className="mb-12 scroll-mt-32">
           <div className="mb-20">
             <h2 className="text-4xl md:text-5xl font-display font-bold border-l-8 border-primary pl-6 mb-4 uppercase text-slate-900 dark:text-white">Case Studies</h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-3xl leading-relaxed text-lg">
@@ -534,9 +534,9 @@ const App: React.FC = () => {
             </p>
           </div>
           
-          <div className="relative group overflow-x-auto no-scrollbar scroll-smooth">
-            <div className="flex animate-scroll hover:pause flex-nowrap gap-6 px-6 pb-4">
-              {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
+          <div className="relative group">
+            <div className="flex animate-scroll hover:pause flex-nowrap gap-6 px-6">
+              {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
                 <div 
                   key={`${testimonial.id}-${idx}`}
                   className="w-[320px] md:w-[380px] shrink-0 p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-white/[0.08] hover:border-primary/30 group/card"
