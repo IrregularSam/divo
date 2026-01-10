@@ -716,28 +716,28 @@ const App: React.FC = () => {
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-32">
             {/* Discord */}
-            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="https://discord.com/users/divo_51920" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Telegram */}
-            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="https://t.me/DIVO_01" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <Send size={24} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Contact Me Button */}
-            <button className="bg-[#6366f1] text-white px-12 py-5 rounded-full font-bold text-lg flex items-center gap-4 hover:scale-105 transition-all shadow-xl shadow-indigo-500/20 group uppercase tracking-widest border border-white/10">
+            <a href="mailto:dahunsimololuwa@gmail.com" className="bg-[#6366f1] text-white px-12 py-5 rounded-full font-bold text-lg flex items-center gap-4 hover:scale-105 transition-all shadow-xl shadow-indigo-500/20 group uppercase tracking-widest border border-white/10">
               CONTACT ME
               <ArrowRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform rotate-[-45deg]" />
-            </button>
+            </a>
 
             {/* Twitter */}
-            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="https://x.com/Divo_Creates" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <Twitter size={24} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Mail */}
-            <a href="#" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="mailto:dahunsimololuwa@gmail.com" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <Mail size={24} className="group-hover:scale-110 transition-transform" />
             </a>
           </div>
