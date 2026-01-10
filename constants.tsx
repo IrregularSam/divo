@@ -416,6 +416,7 @@ export const PORTFOLIO: PortfolioItem[] = [
 export const TOOLS = [
   { name: 'Premiere Pro', category: 'Video Editing', icon: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg' },
   { name: 'After Effects', category: 'Motion Graphics', icon: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg' },
+  { name: 'Discord', category: 'Community Management', icon: '/logos/discord.png' },
   { name: 'Figma', category: 'UI/UX Design', icon: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
   { name: 'Notion', category: 'Knowledge Management', icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg' },
   { name: 'CapCut', category: 'Short-Form Video', icon: '/logos/capcut.png' },
