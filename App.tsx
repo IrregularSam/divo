@@ -35,6 +35,7 @@ import {
   MARQUEE_TAGS, 
   FOOTER_TAGS,
   CASE_STUDIES,
+  TESTIMONIALS,
   getIcon 
 } from './constants';
 import { CaseStudy } from './types';
@@ -521,6 +522,44 @@ const App: React.FC = () => {
                 </div>
               </button>
             ))}
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="mb-48 overflow-hidden py-20 bg-slate-50/30 dark:bg-slate-900/10 border-y border-slate-100 dark:border-slate-800/50">
+          <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 uppercase text-slate-900 dark:text-white">Testimonials</h2>
+            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+              What people I’ve worked with say about my work, contribution, and impact.
+            </p>
+          </div>
+          
+          <div className="relative group">
+            <div className="flex animate-scroll hover:pause flex-nowrap gap-6 px-6">
+              {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
+                <div 
+                  key={`${testimonial.id}-${idx}`}
+                  className="w-[320px] md:w-[380px] shrink-0 p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-white/[0.08] hover:border-primary/30 group/card"
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name} 
+                      className="w-10 h-10 rounded-full object-cover border border-white/20"
+                    />
+                    <div>
+                      <h4 className="font-bold text-slate-900 dark:text-white">{testimonial.name}</h4>
+                      <p className="text-xs text-slate-500 uppercase tracking-widest">
+                        {testimonial.role} <span className="text-primary/70">@ {testimonial.company}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic text-sm md:text-base">
+                    "{testimonial.text}"
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

@@ -27,9 +27,14 @@ export interface PortfolioItem {
 }
 
 export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  text: string;
+  image: string;
   quote: string;
   author: string;
-  role: string;
   avatar: string;
 }
 
