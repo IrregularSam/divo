@@ -716,12 +716,12 @@ const App: React.FC = () => {
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-32">
             {/* Discord */}
-            <a href="https://discord.com/users/divo_51920" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="https://discord.com/users/divo_51920" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Telegram */}
-            <a href="https://t.me/DIVO_01" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="https://t.me/DIVO_01" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <Send size={24} className="group-hover:scale-110 transition-transform" />
             </a>
 
@@ -732,12 +732,12 @@ const App: React.FC = () => {
             </a>
 
             {/* Twitter */}
-            <a href="https://x.com/Divo_Creates" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="https://x.com/Divo_Creates" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <Twitter size={24} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Mail */}
-            <a href="mailto:dahunsimololuwa@gmail.com" className="w-16 h-16 rounded-full bg-slate-900/40 backdrop-blur-md border border-slate-800/50 flex items-center justify-center text-slate-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
+            <a href="mailto:dahunsimololuwa@gmail.com" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
               <Mail size={24} className="group-hover:scale-110 transition-transform" />
             </a>
           </div>
