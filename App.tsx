@@ -27,9 +27,9 @@ import { CaseStudy } from './types';
 
 const NAV_ITEMS = [
   { name: 'About', id: 'about' },
-  { name: 'Channels', id: 'channels' },
-  { name: 'Reports', id: 'reports' },
-  { name: 'Reel', id: 'reel' },
+  { name: 'Services', id: 'channels' },
+  { name: 'Case Studies', id: 'reports' },
+  { name: 'Content', id: 'reel' },
 ];
 
 const Navbar: React.FC = () => {
@@ -118,7 +118,7 @@ const CaseStudyModal: React.FC<{ study: CaseStudy; onClose: () => void }> = ({ s
         <div className="sticky top-0 z-50 px-6 md:px-12 py-5 bg-ink/95 backdrop-blur-md flex items-center justify-between border-b border-line">
           <div className="flex items-center gap-4">
             <span className="dateline text-[10px] text-signal border border-signal/40 px-3 py-1">{study.type.toUpperCase()}</span>
-            <p className="dateline text-[10px] text-muted hidden md:block">FIELD REPORT — FULL FILE</p>
+            <p className="dateline text-[10px] text-muted hidden md:block">CASE STUDY</p>
           </div>
           <button onClick={onClose} className="p-2 text-muted hover:text-signal transition-all">
             <X size={22} />
@@ -222,24 +222,49 @@ function App() {
 
       <main className="relative z-10">
         {/* HERO */}
-        <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-24 pb-12 max-w-6xl mx-auto">
-          <p className="dateline text-[11px] text-data mb-8">
-            FIELD REPORT · WEB3 GROWTH · LAGOS, NG · {new Date().getFullYear()}
-          </p>
-          <h1 className="text-5xl md:text-8xl font-display font-medium text-paper leading-[0.95] max-w-4xl mb-10">
-            Turning on-chain noise into signal builders can act on.
-          </h1>
-          <p className="text-lg md:text-xl text-muted max-w-xl mb-12 leading-relaxed">
-            I'm Divo — a content strategist and growth lead working across Solana DeFi and African market expansion.
-            I translate what protocols are building into content communities actually trust and act on.
-          </p>
-          <div className="flex flex-wrap items-center gap-6">
-            <button onClick={() => scrollToSection('reports')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors flex items-center gap-2">
-              READ THE FIELD REPORTS <ArrowRight size={14} />
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-paper border-b border-line hover:border-signal hover:text-signal transition-colors pb-1">
-              OPEN A CHANNEL →
-            </button>
+        <section id="hero" className="min-h-screen flex items-center px-6 md:px-10 pt-28 pb-16 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-14 md:gap-16 items-center w-full">
+            <div>
+              <div className="inline-flex items-center gap-2 dateline text-[11px] text-signal border border-signal/30 px-3 py-1.5 mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse"></span>
+                AVAILABLE FOR WORK
+              </div>
+              <h1 className="text-5xl md:text-7xl font-display font-medium text-paper leading-[1.02] mb-6">
+                Hi, I'm Divo.<br />I make content people <span className="text-signal italic">actually watch.</span>
+              </h1>
+              <p className="text-lg text-muted max-w-lg mb-12 leading-relaxed">
+                Content strategist and creator working across Web3 and African markets — videos, threads, and campaigns
+                for teams who want their product explained clearly, not hyped.
+              </p>
+              <div className="flex flex-wrap items-center gap-6 mb-14">
+                <button onClick={() => scrollToSection('reel')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors flex items-center gap-2">
+                  SEE MY WORK <ArrowRight size={14} />
+                </button>
+                <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-paper border-b border-line hover:border-signal hover:text-signal transition-colors pb-1">
+                  GET IN TOUCH →
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-10 pt-8 border-t border-line">
+                <div>
+                  <span className="text-3xl md:text-4xl font-display font-medium text-paper">150+</span>
+                  <p className="dateline text-[10px] text-muted mt-1">COMMUNITY BUILT</p>
+                </div>
+                <div>
+                  <span className="text-3xl md:text-4xl font-display font-medium text-paper">3+</span>
+                  <p className="dateline text-[10px] text-muted mt-1">YEARS IN WEB3</p>
+                </div>
+                <div>
+                  <span className="text-3xl md:text-4xl font-display font-medium text-paper">6</span>
+                  <p className="dateline text-[10px] text-muted mt-1">PROTOCOLS WORKED WITH</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative w-full max-w-md mx-auto md:mx-0">
+              <div className="absolute -inset-4 bg-signal/10 blur-3xl -z-10"></div>
+              <div className="aspect-[4/5] w-full overflow-hidden border border-line bg-surface">
+                <img src="/photos/divo-portrait-studio.png" alt="Divo" className="w-full h-full object-cover" />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -249,22 +274,22 @@ function App() {
         <section id="about" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 scroll-mt-16">
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-20 items-start">
             <div className="aspect-[4/5] overflow-hidden border border-line bg-surface">
-              <img src="/attached_assets/New_PFP_1767738004126.jpg" alt="Divo" className="w-full h-full object-cover" />
+              <img src="/photos/divo-portrait-outdoor.png" alt="Divo" className="w-full h-full object-cover" />
             </div>
             <div>
-              <p className="dateline text-[11px] text-signal mb-6">CORRESPONDENT FILE</p>
+              <p className="dateline text-[11px] text-signal mb-6">ABOUT ME</p>
               <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-8 leading-tight">
-                Based in Lagos. Working across three continents' worth of builders.
+                Based in Lagos, working with builders across Africa and beyond.
               </h2>
               <div className="space-y-4 text-muted leading-relaxed mb-10">
-                <p>I got into Web3 content because most of it is either hype or homework — nothing in between. My work sits in that gap: clear enough for a newcomer, accurate enough for the protocol's own engineers.</p>
-                <p>Most of my track record is African growth work: getting developers in Lagos, Nairobi, and beyond to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
+                <p>I got into Web3 content because most of it is either hype or homework — nothing in between. My work sits in that gap: clear enough for a newcomer, accurate enough for the team's own engineers.</p>
+                <p>Most of what I do is African growth work — getting developers in Lagos, Nairobi, and beyond to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
               </div>
               <div className="grid grid-cols-2 gap-6 dateline text-[11px] border-t border-line pt-6">
                 <div><span className="text-muted block mb-1">BASE</span><span className="text-paper">Lagos, NG</span></div>
                 <div><span className="text-muted block mb-1">FOCUS</span><span className="text-paper">Web3 Growth + African Expansion</span></div>
-                <div><span className="text-muted block mb-1">ON AIR SINCE</span><span className="text-paper">2023</span></div>
-                <div><span className="text-muted block mb-1">CURRENT</span><span className="text-paper">Open to roles</span></div>
+                <div><span className="text-muted block mb-1">SINCE</span><span className="text-paper">2023</span></div>
+                <div><span className="text-muted block mb-1">STATUS</span><span className="text-paper">Open to roles</span></div>
               </div>
             </div>
           </div>
@@ -273,12 +298,12 @@ function App() {
         {/* CHANNELS (Services) */}
         <section id="channels" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
           <p className="dateline text-[11px] text-signal mb-4">WHAT I DO</p>
-          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Channels I operate on</h2>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Services</h2>
           <div className="grid md:grid-cols-2 gap-px bg-line border border-line">
             {SERVICES.map((service, idx) => (
               <div key={service.id} className="bg-ink p-8 hover:bg-surface transition-colors">
                 <div className="flex items-start justify-between mb-6">
-                  <span className="dateline text-xs text-signal">CH.{String(idx + 1).padStart(2, '0')}</span>
+                  <span className="dateline text-xs text-signal">{String(idx + 1).padStart(2, '0')}</span>
                   <span className="text-data">{getIcon(service.icon)}</span>
                 </div>
                 <h3 className="text-xl font-display font-medium text-paper mb-3">{service.title}</h3>
@@ -290,8 +315,8 @@ function App() {
 
         {/* TRANSMISSION HISTORY (Experience) */}
         <section className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line">
-          <p className="dateline text-[11px] text-signal mb-4">TRANSMISSION HISTORY</p>
-          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Where I've been broadcasting from</h2>
+          <p className="dateline text-[11px] text-signal mb-4">EXPERIENCE</p>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Where I've worked</h2>
           <div className="space-y-0 border-t border-line">
             {EXPERIENCE.map((exp, idx) => (
               <div key={idx} className="grid md:grid-cols-[140px_1fr] gap-4 md:gap-10 py-8 border-b border-line group">
@@ -315,8 +340,8 @@ function App() {
 
         {/* FIELD REPORTS (Case Studies) */}
         <section id="reports" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
-          <p className="dateline text-[11px] text-signal mb-4">FULL FILES</p>
-          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Field reports</h2>
+          <p className="dateline text-[11px] text-signal mb-4">SELECTED WORK</p>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Case studies</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {CASE_STUDIES.map((study) => (
               <button
@@ -346,7 +371,7 @@ function App() {
         {/* BROADCAST REEL (Portfolio/Work) */}
         <section id="reel" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
           <p className="dateline text-[11px] text-signal mb-4">SELECTED CUTS</p>
-          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Broadcast reel</h2>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">My content</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PORTFOLIO.map((item, idx) => (
               <div
@@ -402,9 +427,9 @@ function App() {
 
         {/* FOOTER / CONTACT */}
         <footer id="contact" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
-          <p className="dateline text-[11px] text-signal mb-4">OPEN FREQUENCY</p>
+          <p className="dateline text-[11px] text-signal mb-4">GET IN TOUCH</p>
           <h2 className="text-4xl md:text-7xl font-display font-medium text-paper mb-12 leading-[0.95]">
-            Let's get<br /><span className="text-signal italic">on air.</span>
+            Let's work<br /><span className="text-signal italic">together.</span>
           </h2>
           <a href="mailto:dahunsimololuwa@gmail.com" className="inline-flex items-center gap-4 dateline text-sm text-ink bg-paper px-8 py-4 hover:bg-signal transition-colors mb-16">
             dahunsimololuwa@gmail.com <ArrowRight size={16} />
@@ -432,7 +457,7 @@ function App() {
               ))}
             </div>
           </div>
-          <p className="mt-8 dateline text-[10px] text-muted">© {new Date().getFullYear()} DIVO — FIELD DISPATCHES, ON THE HOUR</p>
+          <p className="mt-8 dateline text-[10px] text-muted">© {new Date().getFullYear()} DIVO — LAGOS, NIGERIA</p>
         </footer>
       </main>
     </div>
