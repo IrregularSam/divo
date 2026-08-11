@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { background: #14110D; }
+body { background: #14110D; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #14110D; }
+::-webkit-scrollbar-thumb { background: #332C22; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #E8952F; }
+
+.dateline {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.14em;
+}
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.card-hover { transition: border-color 0.3s ease, transform 0.3s ease; }
+.card-hover:hover { border-color: #E8952F; transform: translateY(-3px); }
+
+.underline-grow { position: relative; }
+.underline-grow::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 1px;
+  background: #E8952F;
+  transition: width 0.35s ease;
+}
+.underline-grow:hover::after { width: 100%; }

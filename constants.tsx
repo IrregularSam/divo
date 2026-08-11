@@ -14,7 +14,7 @@ import {
   CheckCircle2,
   Box
 } from 'lucide-react';
-import { Service, Skill, WorkExperience, PortfolioItem, Testimonial, CaseStudy } from './types';
+import { Service, Skill, WorkExperience, PortfolioItem, FieldLogEntry, CaseStudy } from './types';
 
 export const SERVICES: Service[] = [
   { 
@@ -424,62 +424,15 @@ export const TOOLS = [
   { name: 'Workspace', category: 'Collaboration', icon: '/logos/workspace.png' },
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    id: '1',
-    name: 'Alex M.',
-    role: 'Community Lead',
-    company: 'Solflare',
-    text: 'DIVO has a strong grasp of both product and community needs. His ability to translate complex roadmap items into engaging content is unmatched.',
-    image: 'https://i.pravatar.cc/150?u=alexm',
-    quote: '',
-    author: '',
-    avatar: ''
-  },
-  {
-    id: '2',
-    name: 'Sarah J.',
-    role: 'Marketing Director',
-    company: 'Marinade',
-    text: 'Working with DIVO on our educational campaign was a game-changer. He simplified DeFi primitives in a way that truly resonated with our users.',
-    image: 'https://i.pravatar.cc/150?u=sarahj',
-    quote: '',
-    author: '',
-    avatar: ''
-  },
-  {
-    id: '3',
-    name: 'Michael K.',
-    role: 'Founder',
-    company: 'Vara Network',
-    text: 'DIVO’s impact on our African expansion was immediate. He doesn’t just create content; he builds communities around technical products.',
-    image: 'https://i.pravatar.cc/150?u=michaelk',
-    quote: '',
-    author: '',
-    avatar: ''
-  },
-  {
-    id: '4',
-    name: 'Elena R.',
-    role: 'Growth Lead',
-    company: 'deBridge',
-    text: 'The clarity DIVO brings to infrastructure marketing is exceptional. He turned our documentation into a compelling narrative for the multi-chain future.',
-    image: 'https://i.pravatar.cc/150?u=elenar',
-    quote: '',
-    author: '',
-    avatar: ''
-  },
-  {
-    id: '5',
-    name: 'David O.',
-    role: 'Ecosystem Manager',
-    company: 'SuperteamNG',
-    text: 'A top-tier creator who understands the Solana ecosystem deeply. DIVO’s work consistently sets the bar for high-signal content in the region.',
-    image: 'https://i.pravatar.cc/150?u=davido',
-    quote: '',
-    author: '',
-    avatar: ''
-  }
+// NOTE FOR DIVO: These entries should be real, dated milestones you can stand behind.
+// Edit freely — add real dates/cities as they happen. Keep it factual; no invented quotes.
+export const FIELD_LOG: FieldLogEntry[] = [
+  { id: '1', time: 'WK 1', city: 'LAGOS, NG', entry: 'Vara Network African ambassador program kicks off.' },
+  { id: '2', time: 'WK 6', city: 'LAGOS, NG', entry: 'Builder community crosses 150 active members — zero paid ads.' },
+  { id: '3', time: 'ONGOING', city: 'NAIROBI, KE', entry: 'Developer workshops run alongside Web3 Nigeria & Onchain Society.' },
+  { id: '4', time: 'ONGOING', city: 'REMOTE', entry: 'Selected for Kamino Finance\u2019s Confluence content cohort.' },
+  { id: '5', time: 'ONGOING', city: 'REMOTE', entry: 'Solflare Guardian — community security & education.' },
+  { id: '6', time: 'ONGOING', city: 'LAGOS, NG', entry: 'Co-founded VaraNames, first naming protocol on Vara.' },
 ];
 
 export const MARQUEE_TAGS = [

@@ -1,117 +1,103 @@
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Sun, 
-  Moon, 
-  Play, 
-  Zap, 
-  CheckCircle2,
-  Sparkles,
+import {
+  Play,
   X,
   ArrowRight,
-  Target,
-  Trophy,
-  Activity,
-  Layout,
+  ArrowUpRight,
   Clock,
-  PieChart,
-  ChevronRight,
-  Maximize2,
-  FileText,
-  Cpu,
-  Layers,
-  Box as BoxIcon,
   ChevronDown,
   MessageCircle,
   Send,
   Twitter,
-  Mail
+  Mail,
+  Radio
 } from 'lucide-react';
-import { 
-  SERVICES, 
-  EXPERIENCE, 
-  PORTFOLIO, 
-  TOOLS, 
-  MARQUEE_TAGS, 
+import {
+  SERVICES,
+  EXPERIENCE,
+  PORTFOLIO,
+  TOOLS,
   FOOTER_TAGS,
   CASE_STUDIES,
-  TESTIMONIALS,
-  getIcon 
+  FIELD_LOG,
+  getIcon
 } from './constants';
 import { CaseStudy } from './types';
 
+const NAV_ITEMS = [
+  { name: 'About', id: 'about' },
+  { name: 'Channels', id: 'channels' },
+  { name: 'Reports', id: 'reports' },
+  { name: 'Reel', id: 'reel' },
+];
+
 const Navbar: React.FC = () => {
-  const [active, setActive] = useState('hero');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100;
+      const offset = 90;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActive(id);
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
     }
   };
 
   return (
-    <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-[60] px-4 w-full max-w-xl">
-      <div className="bg-white/10 dark:bg-slate-950/20 backdrop-blur-2xl border border-white/10 dark:border-slate-800/30 rounded-full px-2 py-2 flex items-center justify-between shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-300">
-        <div className="flex items-center gap-1 md:gap-2 px-2 overflow-x-auto no-scrollbar">
-          {[
-            { name: 'Home', id: 'hero' },
-            { name: 'About', id: 'about' },
-            { name: 'Services', id: 'services' },
-            { name: 'Cases', id: 'casestudies' },
-            { name: 'Work', id: 'work' }
-          ].map((item) => (
+    <nav className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${scrolled ? 'bg-ink/90 backdrop-blur-md border-b border-line' : 'bg-transparent border-b border-transparent'}`}>
+      <div className="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+        <button onClick={() => scrollToSection('hero')} className="dateline text-xs text-paper flex items-center gap-2">
+          <Radio size={14} className="text-signal" />
+          DIVO
+        </button>
+        <div className="hidden md:flex items-center gap-8">
+          {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`px-3 py-1.5 text-xs md:text-sm font-medium rounded-full transition-all whitespace-nowrap ${
-                active === item.id 
-                  ? 'bg-primary/80 text-white shadow-lg backdrop-blur-md' 
-                  : 'text-slate-600 dark:text-slate-300 hover:text-primary'
-              }`}
+              className="dateline text-[11px] text-muted hover:text-signal transition-colors underline-grow"
             >
-              {item.name}
+              {item.name.toUpperCase()}
             </button>
           ))}
         </div>
-        <button 
+        <button
           onClick={() => scrollToSection('contact')}
-          className="bg-primary/80 text-white rounded-full px-6 py-2 text-sm font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 transition-all backdrop-blur-md"
+          className="dateline text-[11px] border border-line text-paper px-4 py-2 hover:border-signal hover:text-signal transition-colors"
         >
-          Contact
+          CONTACT →
         </button>
       </div>
     </nav>
   );
 };
 
-const FuturisticBackground: React.FC = () => (
-  <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div className="absolute inset-0 cyber-grid opacity-20 animate-grid-flow"></div>
-    <div className="absolute top-[10%] right-[15%] animate-float opacity-10">
-      <Cpu size={140} className="text-primary" />
+const Ticker: React.FC = () => {
+  const doubled = [...FIELD_LOG, ...FIELD_LOG];
+  return (
+    <div className="w-full bg-surface border-y border-line overflow-hidden py-3">
+      <div className="flex whitespace-nowrap animate-ticker w-max">
+        {doubled.map((entry, idx) => (
+          <div key={idx} className="flex items-center gap-3 px-6 dateline text-[11px] text-muted">
+            <span className="text-signal">{entry.time}</span>
+            <span className="text-data">{entry.city}</span>
+            <span>{entry.entry}</span>
+            <span className="text-line ml-3">///</span>
+          </div>
+        ))}
+      </div>
     </div>
-    <div className="absolute bottom-[20%] left-[10%] animate-float opacity-10" style={{ animationDelay: '2s' }}>
-      <Layers size={110} className="text-indigo-400" />
-    </div>
-    <div className="absolute top-[45%] left-[5%] animate-float opacity-5" style={{ animationDelay: '4s' }}>
-      <BoxIcon size={90} className="text-purple-400" />
-    </div>
-    {/* Decorative Glows */}
-    <div className="absolute -top-[10%] left-[10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[140px]"></div>
-    <div className="absolute bottom-0 right-[10%] w-[40%] h-[40%] bg-indigo-500/10 rounded-full blur-[120px]"></div>
-  </div>
-);
+  );
+};
 
 const CaseStudyModal: React.FC<{ study: CaseStudy; onClose: () => void }> = ({ study, onClose }) => {
   useEffect(() => {
@@ -126,164 +112,87 @@ const CaseStudyModal: React.FC<{ study: CaseStudy; onClose: () => void }> = ({ s
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8 overflow-hidden">
-      <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-xl" onClick={onClose}></div>
-      <div className="relative w-full h-full max-w-7xl bg-white dark:bg-[#020617] md:rounded-[2.5rem] overflow-y-auto shadow-2xl border border-slate-200/20 dark:border-slate-800/50 animate-in fade-in zoom-in duration-500 no-scrollbar">
-        
-        <div className="sticky top-0 z-50 px-8 py-6 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md flex items-center justify-between border-b border-slate-100 dark:border-slate-800/50">
+      <div className="absolute inset-0 bg-ink/95 backdrop-blur-md" onClick={onClose}></div>
+      <div className="relative w-full h-full max-w-5xl bg-ink md:border md:border-line overflow-y-auto no-scrollbar">
+
+        <div className="sticky top-0 z-50 px-6 md:px-12 py-5 bg-ink/95 backdrop-blur-md flex items-center justify-between border-b border-line">
           <div className="flex items-center gap-4">
-            <span className="text-[10px] font-bold text-primary px-3 py-1 bg-primary/10 rounded-full tracking-widest uppercase">{study.type}</span>
-            <div className="h-4 w-px bg-slate-200 dark:bg-slate-800"></div>
-            <p className="text-xs font-medium text-slate-400 dark:text-slate-500 uppercase tracking-widest hidden md:block">Case Study Detail Report</p>
+            <span className="dateline text-[10px] text-signal border border-signal/40 px-3 py-1">{study.type.toUpperCase()}</span>
+            <p className="dateline text-[10px] text-muted hidden md:block">FIELD REPORT — FULL FILE</p>
           </div>
-          <button 
-            onClick={onClose}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-all active:scale-90"
-          >
-            <X size={24} />
+          <button onClick={onClose} className="p-2 text-muted hover:text-signal transition-all">
+            <X size={22} />
           </button>
         </div>
 
-        <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
-          <img src={study.bannerImage} className="w-full h-full object-cover" alt={study.title} />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
-            <h2 className="text-4xl md:text-7xl font-display font-bold text-white max-w-4xl leading-tight mb-6">
+        <div className="relative w-full h-[38vh] min-h-[280px] overflow-hidden border-b border-line">
+          <img src={study.bannerImage} className="w-full h-full object-cover grayscale opacity-40" alt={study.title} />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            <p className="dateline text-[11px] text-data mb-4">{study.metadata.project} · {study.metadata.duration}</p>
+            <h2 className="text-3xl md:text-6xl font-display font-medium text-paper max-w-3xl leading-[1.05]">
               {study.header}
             </h2>
-            <div className="flex flex-wrap gap-6 text-white/70">
-              <div className="flex items-center gap-2">
-                <Layout size={18} className="text-primary" />
-                <span className="text-sm font-medium uppercase tracking-wider">{study.metadata.project}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock size={18} className="text-primary" />
-                <span className="text-sm font-medium uppercase tracking-wider">{study.metadata.duration}</span>
-              </div>
-            </div>
           </div>
         </div>
 
-        <div className="p-8 md:p-16 max-w-6xl mx-auto space-y-24">
-          <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-6 md:p-12 max-w-4xl mx-auto space-y-16">
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-px bg-line border border-line">
             {study.metrics.map((metric, idx) => (
-              <div key={idx} className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 group hover:border-primary/50 transition-all">
-                <div className="mb-4 text-primary group-hover:scale-110 transition-transform w-fit">
-                  <PieChart size={24} />
-                </div>
-                <h4 className="text-4xl font-display font-bold text-slate-900 dark:text-white mb-1">{metric.value}</h4>
-                <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">{metric.label}</p>
-                <p className="text-xs text-slate-500 dark:text-slate-500">{metric.subtext}</p>
+              <div key={idx} className="p-6 bg-ink">
+                <h4 className="text-3xl font-display font-medium text-data mb-1">{metric.value}</h4>
+                <p className="dateline text-[10px] text-paper mb-1">{metric.label.toUpperCase()}</p>
+                <p className="text-xs text-muted">{metric.subtext}</p>
               </div>
             ))}
           </section>
 
-          <section className="grid md:grid-cols-2 gap-16">
+          <section className="grid md:grid-cols-2 gap-10">
             <div>
-              <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                <div className="w-8 h-px bg-primary"></div> Executive Summary
-              </h3>
-              <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 leading-relaxed font-light italic">
-                "{study.executiveSummary}"
+              <h3 className="dateline text-[11px] text-signal mb-4">EXECUTIVE SUMMARY</h3>
+              <p className="text-lg md:text-xl text-paper leading-relaxed font-display italic font-light">
+                {study.executiveSummary}
               </p>
             </div>
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div>
-                <h4 className="text-sm font-bold dark:text-white uppercase tracking-widest mb-4">Market Context</h4>
-                <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-light">{study.marketContext}</p>
+                <h4 className="dateline text-[10px] text-muted mb-2">MARKET CONTEXT</h4>
+                <p className="text-paper/80 leading-relaxed text-sm">{study.marketContext}</p>
               </div>
               <div>
-                <h4 className="text-sm font-bold dark:text-white uppercase tracking-widest mb-4">The Challenge</h4>
-                <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-light">{study.theChallenge}</p>
+                <h4 className="dateline text-[10px] text-muted mb-2">THE CHALLENGE</h4>
+                <p className="text-paper/80 leading-relaxed text-sm">{study.theChallenge}</p>
               </div>
             </div>
           </section>
 
-          <section className="relative p-12 md:p-16 rounded-[3rem] bg-primary text-white shadow-2xl shadow-primary/20 overflow-hidden">
-             <div className="absolute top-0 right-0 p-16 opacity-10 pointer-events-none">
-               <Target size={300} strokeWidth={0.5} />
-             </div>
-             <div className="relative z-10">
-               <h3 className="text-3xl md:text-5xl font-display font-bold mb-12">{study.strategicDeepDive.title}</h3>
-               <div className="grid md:grid-cols-3 gap-12">
-                 {study.strategicDeepDive.points.map((pt, i) => (
-                   <div key={i} className="space-y-4">
-                     <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center font-bold">{i + 1}</div>
-                     <h4 className="text-xl font-bold">{pt.label}</h4>
-                     <p className="text-white/80 text-sm leading-relaxed">{pt.content}</p>
-                   </div>
-                 ))}
-               </div>
-             </div>
-          </section>
-
-          <section className="space-y-8">
-            <div className="flex items-end justify-between">
-              <div>
-                <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-4">Production Showcase</h3>
-                <h2 className="text-3xl font-display font-bold dark:text-white">Assets & Deliverables</h2>
-              </div>
-              <p className="text-sm text-slate-500 hidden md:block">Detailed visual breakdown</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {study.mediaGallery.map((media, i) => (
-                <div key={i} className="group relative rounded-3xl overflow-hidden aspect-video bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                  <img src={media.url} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={media.caption} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                    <p className="text-white text-sm font-medium">{media.caption}</p>
-                  </div>
-                  {media.type === 'video' && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/40">
-                        <Play fill="white" size={24} />
-                      </div>
-                    </div>
-                  )}
+          <section className="border border-line p-6 md:p-10 bg-surface">
+            <h3 className="text-2xl md:text-3xl font-display font-medium text-paper mb-8">{study.strategicDeepDive.title}</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {study.strategicDeepDive.points.map((point, idx) => (
+                <div key={idx}>
+                  <p className="dateline text-[10px] text-signal mb-2">0{idx + 1}</p>
+                  <h5 className="text-paper font-medium mb-2 text-sm">{point.label}</h5>
+                  <p className="text-muted text-sm leading-relaxed">{point.content}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="space-y-8">
-            <div className="max-w-3xl">
-              <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                <Activity size={16} /> Roadmap & Execution
-              </h3>
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg font-light">
-                {study.comprehensiveExecution}
-              </p>
-            </div>
+          <section>
+            <h3 className="dateline text-[11px] text-signal mb-4">EXECUTION</h3>
+            <p className="text-paper/80 leading-relaxed">{study.comprehensiveExecution}</p>
           </section>
 
-          <section className="p-12 md:p-16 rounded-[3rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30">
-            <div className="grid md:grid-cols-2 gap-16">
-              <div className="space-y-6">
-                <h3 className="text-3xl font-display font-bold dark:text-white flex items-center gap-4">
-                  <Trophy className="text-primary" /> Impact Analysis
-                </h3>
-                <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
-                  {study.impactReport.narrative}
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Core Achievements</h4>
-                {study.impactReport.achievements.map((ach, i) => (
-                  <div key={i} className="flex gap-4 items-center p-4 rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 transition-transform hover:translate-x-2">
-                    <CheckCircle2 size={20} className="text-green-500 shrink-0" />
-                    <span className="text-sm font-medium dark:text-slate-200">{ach}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className="pt-12 text-center border-t border-slate-100 dark:border-slate-800">
-             <h4 className="text-2xl font-display font-bold dark:text-white mb-6">Ready to scale your protocol?</h4>
-             <button 
-               onClick={onClose}
-               className="bg-primary text-white px-12 py-4 rounded-full font-bold shadow-xl shadow-primary/30 hover:shadow-primary/50 transition-all hover:scale-105 uppercase tracking-widest text-sm"
-             >
-               Start A Conversation
-             </button>
+          <section className="border-l-2 border-data pl-6">
+            <p className="text-paper/90 italic font-display text-lg mb-6">{study.impactReport.narrative}</p>
+            <ul className="space-y-2">
+              {study.impactReport.achievements.map((a, idx) => (
+                <li key={idx} className="text-muted text-sm flex items-start gap-3">
+                  <span className="text-data mt-1">—</span> {a}
+                </li>
+              ))}
+            </ul>
           </section>
         </div>
       </div>
@@ -291,231 +200,111 @@ const CaseStudyModal: React.FC<{ study: CaseStudy; onClose: () => void }> = ({ s
   );
 };
 
-const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
-  const [isHeroPlaying, setIsHeroPlaying] = useState(true);
-  const testimonialRef = React.useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [resumeTimer, setResumeTimer] = useState<NodeJS.Timeout | null>(null);
+function App() {
+  const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
+  const [hoveredWork, setHoveredWork] = useState<number | null>(null);
 
-  useEffect(() => {
-    const container = testimonialRef.current;
-    if (!container) return;
-
-    let animationFrameId: number;
-    let lastTime = 0;
-    const speed = 0.8; // pixels per frame (very slow, ambient)
-
-    const scroll = () => {
-      if (!isPaused && container) {
-        container.scrollLeft += speed;
-        
-        // Infinite loop: if we've scrolled past the first half, reset to the start
-        // Using half because we duplicated the items
-        if (container.scrollLeft >= container.scrollWidth / 2) {
-          container.scrollLeft = 0;
-        }
-      }
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    animationFrameId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
-
-  const handleInteractionStart = () => {
-    setIsPaused(true);
-    if (resumeTimer) clearTimeout(resumeTimer);
-  };
-
-  const handleInteractionEnd = () => {
-    const timer = setTimeout(() => {
-      setIsPaused(false);
-    }, 2000); // Resume after 2 seconds
-    setResumeTimer(timer);
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          setIsHeroPlaying(false);
-        } else {
-          setIsHeroPlaying(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    const heroSection = document.getElementById('hero');
-    if (heroSection) observer.observe(heroSection);
-
-    return () => {
-      if (heroSection) observer.unobserve(heroSection);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 90;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      window.scrollTo({ top: elementRect - bodyRect - offset, behavior: 'smooth' });
     }
-  }, [darkMode]);
+  };
 
   return (
-    <div className="min-h-screen relative bg-background-light dark:bg-background-dark">
-      <FuturisticBackground />
+    <div className="min-h-screen bg-ink relative">
+      <div className="fixed inset-0 grain z-0 pointer-events-none"></div>
       <Navbar />
+      {selectedStudy && <CaseStudyModal study={selectedStudy} onClose={() => setSelectedStudy(null)} />}
 
-      <div className="fixed bottom-6 right-6 z-50">
-        <button 
-          onClick={() => setDarkMode(!darkMode)}
-          className="bg-surface-light dark:bg-slate-900/80 p-3 rounded-full shadow-lg border border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform text-primary backdrop-blur-md"
-        >
-          {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-        </button>
-      </div>
-
-      {selectedCaseStudy && (
-        <CaseStudyModal 
-          study={selectedCaseStudy} 
-          onClose={() => setSelectedCaseStudy(null)} 
-        />
-      )}
-
-      <main className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24 font-sans">
-        
-        {/* Hero Section */}
-        <section id="hero" className="text-center mb-40 pt-12 scroll-mt-32">
-          <h1 className="text-5xl md:text-8xl font-display font-bold mb-6 tracking-tighter uppercase leading-none text-slate-900 dark:text-white">
-            HI MY NAME IS <span className="text-primary glow-text">DIVO</span>
-          </h1>
-          <p className="text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-            I'm a Video Content Creator, Content Lead,<br className="hidden md:block"/> Growth & BD Lead and Co-founder VaraNames.
+      <main className="relative z-10">
+        {/* HERO */}
+        <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-24 pb-12 max-w-6xl mx-auto">
+          <p className="dateline text-[11px] text-data mb-8">
+            FIELD REPORT · WEB3 GROWTH · LAGOS, NG · {new Date().getFullYear()}
           </p>
-          <div className="tilt-container max-w-5xl mx-auto">
-            <div className={`relative w-full aspect-video bg-surface-light dark:bg-surface-dark rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden group glow-box tilt-card ${isHeroPlaying ? 'no-tilt' : ''}`}>
-              {isHeroPlaying ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/vX-inQa3MKk?autoplay=1&mute=0&loop=1&playlist=vX-inQa3MKk&controls=1&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full border-0 transition-opacity duration-500 opacity-100"
-                ></iframe>
-              ) : (
-                <img 
-                  alt="Hero Visual" 
-                  className="w-full h-full object-cover transition-all duration-700 opacity-60 mix-blend-overlay grayscale" 
-                  src="https://img.youtube.com/vi/vX-inQa3MKk/maxresdefault.jpg"
-                />
-              )}
+          <h1 className="text-5xl md:text-8xl font-display font-medium text-paper leading-[0.95] max-w-4xl mb-10">
+            Turning on-chain noise into signal builders can act on.
+          </h1>
+          <p className="text-lg md:text-xl text-muted max-w-xl mb-12 leading-relaxed">
+            I'm Divo — a content strategist and growth lead working across Solana DeFi and African market expansion.
+            I translate what protocols are building into content communities actually trust and act on.
+          </p>
+          <div className="flex flex-wrap items-center gap-6">
+            <button onClick={() => scrollToSection('reports')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors flex items-center gap-2">
+              READ THE FIELD REPORTS <ArrowRight size={14} />
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-paper border-b border-line hover:border-signal hover:text-signal transition-colors pb-1">
+              OPEN A CHANNEL →
+            </button>
+          </div>
+        </section>
+
+        <Ticker />
+
+        {/* ABOUT */}
+        <section id="about" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 scroll-mt-16">
+          <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-20 items-start">
+            <div className="aspect-[4/5] overflow-hidden border border-line bg-surface">
+              <img src="/attached_assets/New_PFP_1767738004126.jpg" alt="Divo" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p className="dateline text-[11px] text-signal mb-6">CORRESPONDENT FILE</p>
+              <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-8 leading-tight">
+                Based in Lagos. Working across three continents' worth of builders.
+              </h2>
+              <div className="space-y-4 text-muted leading-relaxed mb-10">
+                <p>I got into Web3 content because most of it is either hype or homework — nothing in between. My work sits in that gap: clear enough for a newcomer, accurate enough for the protocol's own engineers.</p>
+                <p>Most of my track record is African growth work: getting developers in Lagos, Nairobi, and beyond to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
+              </div>
+              <div className="grid grid-cols-2 gap-6 dateline text-[11px] border-t border-line pt-6">
+                <div><span className="text-muted block mb-1">BASE</span><span className="text-paper">Lagos, NG</span></div>
+                <div><span className="text-muted block mb-1">FOCUS</span><span className="text-paper">Web3 Growth + African Expansion</span></div>
+                <div><span className="text-muted block mb-1">ON AIR SINCE</span><span className="text-paper">2023</span></div>
+                <div><span className="text-muted block mb-1">CURRENT</span><span className="text-paper">Open to roles</span></div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Marquee */}
-        <div className="w-full overflow-hidden bg-primary py-4 mb-40 -mx-6 md:-mx-0 md:rounded-2xl transform -rotate-1 relative z-20 shadow-2xl shadow-primary/30">
-          <div className="whitespace-nowrap animate-marquee flex items-center gap-12 text-white font-display font-bold tracking-widest uppercase text-xs">
-            {[...MARQUEE_TAGS, ...MARQUEE_TAGS, ...MARQUEE_TAGS].map((tag, idx) => (
-              <React.Fragment key={idx}>
-                <span className="flex items-center gap-4">{tag} <Sparkles size={14} /></span>
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-
-        {/* About Me */}
-        <section id="about" className="grid md:grid-cols-2 gap-16 items-center mb-48 scroll-mt-32">
-          <div className="relative group tilt-container">
-            <div className="absolute -inset-2 bg-gradient-to-r from-primary via-purple-500 to-primary rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative w-full aspect-square bg-slate-900 rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl tilt-card">
-              <img 
-                alt="Divo Portrait" 
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-all duration-700" 
-                src="/attached_assets/New_PFP_1767738004126.jpg"
-              />
-            </div>
-          </div>
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary">Me</span></h2>
-              <div className="w-24 h-2 bg-primary rounded-full"></div>
-            </div>
-            <div className="space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed text-xl font-light">
-              <p>
-                I’m DIVO — a video content creator, content lead, and Web3 builder focused on helping early-stage Web3 teams communicate clearly and grow intentionally.
-              </p>
-              <p>
-                Currently in my third year of Computer Science, I bridge the gap between technical complexity and mainstream adoption through high-impact storytelling and localized strategy.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Work Experience */}
-        <section id="work" className="mb-48 scroll-mt-32">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-display font-bold border-l-8 border-primary pl-6 mb-4 uppercase text-slate-900 dark:text-white">Work Experience</h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-3xl leading-relaxed text-lg">
-              Contributing to industry-leading Layer 1 networks and DeFi protocols.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {EXPERIENCE.map((exp, idx) => (
-              <div key={idx} className="bg-surface-light dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-primary/30 transition-all duration-500 group relative flex flex-col h-full tilt-container">
-                <div className="tilt-card flex flex-col h-full">
-                  <div className="flex items-start justify-between mb-8">
-                    <div className="w-20 h-20 rounded-[1rem] glass border border-slate-100 dark:border-slate-800 p-3 group-hover:scale-110 transition-transform overflow-hidden flex items-center justify-center">
-                      <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover rounded-[0.8rem]" />
-                    </div>
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] px-4 py-1.5 bg-primary/5 rounded-full border border-primary/10">
-                      {exp.period}
-                    </span>
-                  </div>
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold font-display group-hover:text-primary transition-colors text-slate-900 dark:text-white">{exp.company}</h3>
-                    <p className="text-sm font-medium text-slate-500 mt-2 uppercase tracking-widest">{exp.role}</p>
-                  </div>
-                  <p className="text-slate-500 text-sm mb-10 leading-relaxed italic">"{exp.description}"</p>
-                  <div className="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800/50">
-                    <ul className="space-y-4">
-                      {exp.highlights.map((h, i) => (
-                        <li key={i} className="flex gap-4 text-sm text-slate-500 items-start">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+        {/* CHANNELS (Services) */}
+        <section id="channels" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
+          <p className="dateline text-[11px] text-signal mb-4">WHAT I DO</p>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Channels I operate on</h2>
+          <div className="grid md:grid-cols-2 gap-px bg-line border border-line">
+            {SERVICES.map((service, idx) => (
+              <div key={service.id} className="bg-ink p-8 hover:bg-surface transition-colors">
+                <div className="flex items-start justify-between mb-6">
+                  <span className="dateline text-xs text-signal">CH.{String(idx + 1).padStart(2, '0')}</span>
+                  <span className="text-data">{getIcon(service.icon)}</span>
                 </div>
+                <h3 className="text-xl font-display font-medium text-paper mb-3">{service.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{service.description}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* My Services */}
-        <section id="services" className="mb-48 scroll-mt-32">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4 uppercase text-slate-900 dark:text-white">My Services</h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((service) => (
-              <div key={service.id} className="bg-surface-light dark:bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-200 dark:border-slate-800/50 hover:border-primary/50 transition-all hover:shadow-2xl group flex flex-col h-full tilt-container">
-                <div className="tilt-card h-full flex flex-col">
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-all text-primary">
-                    {getIcon(service.icon)}
+        {/* TRANSMISSION HISTORY (Experience) */}
+        <section className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line">
+          <p className="dateline text-[11px] text-signal mb-4">TRANSMISSION HISTORY</p>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Where I've been broadcasting from</h2>
+          <div className="space-y-0 border-t border-line">
+            {EXPERIENCE.map((exp, idx) => (
+              <div key={idx} className="grid md:grid-cols-[140px_1fr] gap-4 md:gap-10 py-8 border-b border-line group">
+                <p className="dateline text-[11px] text-muted pt-1">{exp.period}</p>
+                <div>
+                  <div className="flex items-baseline gap-3 mb-2 flex-wrap">
+                    <h3 className="text-xl font-display font-medium text-paper">{exp.company}</h3>
+                    <span className="dateline text-[10px] text-data">{exp.role}</span>
                   </div>
-                  <h3 className="font-display font-bold text-2xl mb-6 tracking-tight group-hover:text-primary transition-colors text-slate-900 dark:text-white">{service.title}</h3>
-                  <ul className="space-y-4 flex-grow">
-                    {service.description.split('. ').map((point, pIdx) => (
-                      <li key={pIdx} className="flex gap-4 items-start">
-                        <CheckCircle2 size={18} className="text-primary/70 shrink-0 mt-0.5" />
-                        <p className="text-sm text-slate-500 leading-relaxed font-light">{point.trim()}</p>
-                      </li>
+                  <p className="text-muted text-sm mb-3 leading-relaxed">{exp.description}</p>
+                  <ul className="space-y-1">
+                    {exp.highlights.map((h, hidx) => (
+                      <li key={hidx} className="text-muted/70 text-xs flex gap-2"><span className="text-signal">—</span>{h}</li>
                     ))}
                   </ul>
                 </div>
@@ -524,234 +313,126 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* Case Studies */}
-        <section id="casestudies" className="mb-12 scroll-mt-32">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-display font-bold border-l-8 border-primary pl-6 mb-4 uppercase text-slate-900 dark:text-white">Case Studies</h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-3xl leading-relaxed text-lg">
-              Detailed strategic reports on technical content and regional growth.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* FIELD REPORTS (Case Studies) */}
+        <section id="reports" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
+          <p className="dateline text-[11px] text-signal mb-4">FULL FILES</p>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Field reports</h2>
+          <div className="grid md:grid-cols-2 gap-6">
             {CASE_STUDIES.map((study) => (
-              <button 
+              <button
                 key={study.id}
-                onClick={() => setSelectedCaseStudy(study)}
-                className="text-left bg-surface-light dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/50 p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-primary/40 transition-all duration-500 group relative flex flex-col h-full overflow-hidden tilt-container"
+                onClick={() => setSelectedStudy(study)}
+                className="text-left border border-line p-8 hover:border-signal transition-colors card-hover group relative overflow-hidden"
               >
-                <div className="tilt-card flex flex-col h-full w-full">
-                  <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-all duration-700">
-                    <FileText size={160} />
-                  </div>
-                  <span className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] mb-6 bg-primary/5 px-4 py-1.5 rounded-full w-fit">{study.type}</span>
-                  <h3 className="text-3xl font-display font-bold mb-6 group-hover:text-primary transition-colors pr-10 leading-snug text-slate-900 dark:text-white">{study.title}</h3>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-10 leading-relaxed flex-grow font-light">{study.description}</p>
-                  <div className="grid grid-cols-3 gap-6 mb-10 pt-8 border-t border-slate-100 dark:border-slate-800/50">
-                    {study.metrics.slice(0, 3).map((m, i) => (
+                <p className="dateline text-[10px] text-data mb-4">{study.type.toUpperCase()}</p>
+                <h3 className="text-2xl font-display font-medium text-paper mb-3 leading-tight">{study.title}</h3>
+                <p className="text-muted text-sm mb-8 leading-relaxed">{study.description}</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-4">
+                    {study.metrics.slice(0, 2).map((m, i) => (
                       <div key={i}>
-                        <p className="text-xl font-bold text-slate-900 dark:text-white leading-none mb-2">{m.value}</p>
-                        <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">{m.label}</p>
+                        <span className="text-signal font-display text-lg">{m.value}</span>
+                        <span className="dateline text-[9px] text-muted block">{m.label.toUpperCase()}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-primary group-hover:gap-6 transition-all uppercase tracking-[0.3em]">
-                      ACCESS FULL REPORT <ChevronRight size={14} />
-                    </div>
-                    <Maximize2 size={18} className="text-slate-300 dark:text-slate-600 group-hover:text-primary" />
-                  </div>
+                  <ArrowUpRight size={20} className="text-muted group-hover:text-signal transition-colors" />
                 </div>
               </button>
             ))}
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="mb-24 overflow-hidden py-20 bg-slate-50/30 dark:bg-slate-900/10 border-y border-slate-100 dark:border-slate-800/50">
-          <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 uppercase text-slate-900 dark:text-white">Testimonials</h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
-              What people I’ve worked with say about my work, contribution, and impact.
-            </p>
-          </div>
-          
-          <div 
-            ref={testimonialRef}
-            onMouseEnter={handleInteractionStart}
-            onMouseLeave={handleInteractionEnd}
-            onTouchStart={handleInteractionStart}
-            onTouchEnd={handleInteractionEnd}
-            onScroll={(e) => {
-              const target = e.target as HTMLDivElement;
-              // Reset seamless loop even during manual scroll
-              if (target.scrollLeft >= target.scrollWidth / 2) {
-                target.scrollLeft = 0;
-              }
-            }}
-            className="relative group overflow-x-auto no-scrollbar flex flex-nowrap gap-6 px-6 cursor-grab active:cursor-grabbing"
-          >
-            {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
-              <div 
-                key={`${testimonial.id}-${idx}`}
-                className="w-[320px] md:w-[380px] shrink-0 p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-white/[0.08] hover:border-primary/30 group/card"
+        {/* BROADCAST REEL (Portfolio/Work) */}
+        <section id="reel" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
+          <p className="dateline text-[11px] text-signal mb-4">SELECTED CUTS</p>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Broadcast reel</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PORTFOLIO.map((item, idx) => (
+              <div
+                key={idx}
+                className="group relative aspect-video bg-surface border border-line overflow-hidden"
+                onMouseEnter={() => setHoveredWork(idx)}
+                onMouseLeave={() => setHoveredWork(null)}
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name} 
-                    className="w-10 h-10 rounded-full object-cover border border-white/20"
-                  />
-                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white">{testimonial.name}</h4>
-                    <p className="text-xs text-slate-500 uppercase tracking-widest">
-                      {testimonial.role} <span className="text-primary/70">@ {testimonial.company}</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic text-sm md:text-base">
-                  "{testimonial.text}"
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Content Portfolio Section with Vertical Scrollbar */}
-        <section id="portfolio" className="mb-48 scroll-mt-32">
-          <div className="flex items-end justify-between mb-16">
-            <div>
-              <h2 className="text-4xl font-display font-bold border-l-8 border-primary pl-6 uppercase tracking-tight mb-4 text-slate-900 dark:text-white">Content Portfolio</h2>
-              <p className="text-slate-500 text-sm max-w-lg">Explore a massive collection of high-fidelity Web3 and product video content.</p>
-            </div>
-            <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase animate-bounce hidden md:flex">
-              <ChevronDown size={14} /> Scroll Down to Explore
-            </div>
-          </div>
-          
-          {/* Vertical Scroll Container - Ensuring it is clearly defined and scrolls vertically */}
-          <div className="max-h-[600px] overflow-y-auto pr-6 portfolio-v-scroll rounded-[2.5rem] bg-slate-950/20 p-4 border border-slate-200 dark:border-slate-800">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Multiplying items to ensure a long list that requires scrolling */}
-              {[...PORTFOLIO].map((item, idx) => {
-                const [isHovered, setIsHovered] = useState(false);
-                return (
-                  <div 
-                    key={idx} 
-                    className="group tilt-container"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                  >
-                    <div className="relative aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl tilt-card">
-                      {item.videoUrl ? (
-                        <>
-                          <img 
-                            src={item.thumbnail} 
-                            alt={item.title} 
-                            className={`w-full h-full object-cover transition-opacity duration-500 ${isHovered ? 'opacity-0' : 'opacity-50 group-hover:opacity-90'}`} 
-                          />
-                          {isHovered && (
-                            <iframe
-                              src={`${item.videoUrl}?autoplay=1&mute=1&rel=0&modestbranding=1&controls=0`}
-                              title={item.title}
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              className="absolute inset-0 w-full h-full border-0"
-                            ></iframe>
-                          )}
-                        </>
-                      ) : (
-                        <>
-                          <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
-                          <div className="absolute inset-0 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity">
-                            <div className="w-20 h-20 rounded-full glass border border-white/20 flex items-center justify-center">
-                              <Play size={32} fill="white" className="ml-1.5" />
-                            </div>
-                          </div>
-                        </>
-                      )}
-                      <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none">
-                        <p className="text-white font-display font-bold text-xl uppercase tracking-tight">{item.title}</p>
-                        <p className="text-white/60 text-[10px] mt-2 font-medium tracking-widest uppercase">Video Production • {idx + 1}</p>
-                      </div>
+                {item.videoUrl && hoveredWork === idx ? (
+                  <iframe
+                    src={`${item.videoUrl}?autoplay=1&mute=1&rel=0&modestbranding=1&controls=0`}
+                    title={item.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full border-0"
+                  ></iframe>
+                ) : (
+                  <>
+                    <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover opacity-50 grayscale group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-500" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Play size={28} className="text-signal opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" />
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Tools Section */}
-        <section id="tools" className="mb-48 text-center scroll-mt-32">
-          <div className="mb-20">
-            <h2 className="text-5xl font-display font-bold mb-6 tracking-tight uppercase text-slate-900 dark:text-white">Tools I Use</h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {TOOLS.map((tool, index) => (
-              <div key={index} className="group relative tilt-container">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-purple-600 rounded-[2rem] blur opacity-0 group-hover:opacity-20 transition duration-500"></div>
-                <div className="relative h-full bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/60 p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center tilt-card">
-                  <div className="w-16 h-16 mb-8 flex items-center justify-center p-3 rounded-2xl glass border border-slate-100 dark:border-slate-800 overflow-hidden">
-                    {tool.icon === 'sparkles' ? (
-                      <Sparkles size={32} className="text-primary animate-pulse" />
-                    ) : (
-                      <img src={tool.icon} alt={tool.name} className="w-full h-full object-contain rounded-lg" />
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold font-display group-hover:text-primary transition-colors text-slate-900 dark:text-white">{tool.name}</h3>
-                  <p className="text-[10px] text-slate-500 mt-3 uppercase tracking-widest font-bold">{tool.category}</p>
+                  </>
+                )}
+                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-ink via-ink/70 to-transparent pointer-events-none">
+                  <p className="text-paper font-display font-medium text-sm leading-tight">{item.title}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Footer - Updated Design */}
-        <footer id="contact" className="text-center pt-24 scroll-mt-32">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-7xl font-display font-bold mb-2 uppercase tracking-tighter text-slate-900 dark:text-white">Let's Create <span className="text-primary">Something</span></h2>
-            <h2 className="text-4xl md:text-7xl font-display font-bold text-primary uppercase tracking-tighter">Amazing Together</h2>
+        {/* KIT (Tools) */}
+        <section className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line">
+          <p className="dateline text-[11px] text-signal mb-4">EQUIPMENT</p>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">Kit</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line border border-line">
+            {TOOLS.map((tool, index) => (
+              <div key={index} className="bg-ink p-6 flex flex-col items-center text-center hover:bg-surface transition-colors">
+                <div className="w-10 h-10 mb-4 flex items-center justify-center">
+                  {tool.icon === 'sparkles' ? (
+                    <Radio size={24} className="text-signal" />
+                  ) : (
+                    <img src={tool.icon} alt={tool.name} className="w-full h-full object-contain" />
+                  )}
+                </div>
+                <h3 className="text-sm font-medium text-paper">{tool.name}</h3>
+                <p className="dateline text-[9px] text-muted mt-2">{tool.category.toUpperCase()}</p>
+              </div>
+            ))}
           </div>
-          
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-32">
-            {/* Discord */}
-            <a href="https://discord.com/users/divo_51920" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
-              <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
-            </a>
+        </section>
 
-            {/* Telegram */}
-            <a href="https://t.me/DIVO_01" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
-              <Send size={24} className="group-hover:scale-110 transition-transform" />
-            </a>
+        {/* FOOTER / CONTACT */}
+        <footer id="contact" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
+          <p className="dateline text-[11px] text-signal mb-4">OPEN FREQUENCY</p>
+          <h2 className="text-4xl md:text-7xl font-display font-medium text-paper mb-12 leading-[0.95]">
+            Let's get<br /><span className="text-signal italic">on air.</span>
+          </h2>
+          <a href="mailto:dahunsimololuwa@gmail.com" className="inline-flex items-center gap-4 dateline text-sm text-ink bg-paper px-8 py-4 hover:bg-signal transition-colors mb-16">
+            dahunsimololuwa@gmail.com <ArrowRight size={16} />
+          </a>
 
-            {/* Contact Me Button */}
-            <a href="mailto:dahunsimololuwa@gmail.com" className="bg-[#6366f1] text-white px-12 py-5 rounded-full font-bold text-lg flex items-center gap-4 hover:scale-105 transition-all shadow-xl shadow-indigo-500/20 group uppercase tracking-widest border border-white/10">
-              CONTACT ME
-              <ArrowRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform rotate-[-45deg]" />
+          <div className="flex flex-wrap items-center gap-6 mb-16">
+            <a href="https://discord.com/users/divo_51920" target="_blank" rel="noopener noreferrer" className="dateline text-xs text-muted hover:text-signal transition-colors flex items-center gap-2">
+              <MessageCircle size={16} /> DISCORD
             </a>
-
-            {/* Twitter */}
-            <a href="https://x.com/Divo_Creates" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
-              <Twitter size={24} className="group-hover:scale-110 transition-transform" />
+            <a href="https://t.me/DIVO_01" target="_blank" rel="noopener noreferrer" className="dateline text-xs text-muted hover:text-signal transition-colors flex items-center gap-2">
+              <Send size={16} /> TELEGRAM
             </a>
-
-            {/* Mail */}
-            <a href="mailto:dahunsimololuwa@gmail.com" className="w-16 h-16 rounded-full bg-slate-900/10 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-slate-800/50 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 shadow-lg group">
-              <Mail size={24} className="group-hover:scale-110 transition-transform" />
+            <a href="https://x.com/Divo_Creates" target="_blank" rel="noopener noreferrer" className="dateline text-xs text-muted hover:text-signal transition-colors flex items-center gap-2">
+              <Twitter size={16} /> X
+            </a>
+            <a href="mailto:dahunsimololuwa@gmail.com" className="dateline text-xs text-muted hover:text-signal transition-colors flex items-center gap-2">
+              <Mail size={16} /> EMAIL
             </a>
           </div>
 
-          <div className="w-full overflow-hidden bg-primary py-5 -mx-6 md:-mx-0 md:rounded-2xl mb-12 shadow-2xl shadow-primary/30 relative">
-            <div className="whitespace-nowrap animate-marquee flex items-center gap-16 text-white font-display font-bold text-sm uppercase tracking-widest">
+          <div className="w-full overflow-hidden border-y border-line py-4">
+            <div className="whitespace-nowrap animate-ticker-slow flex items-center gap-10 dateline text-[11px] text-muted w-max">
               {[...FOOTER_TAGS, ...FOOTER_TAGS, ...FOOTER_TAGS].map((tag, idx) => (
-                <React.Fragment key={idx}>
-                  <span className="flex items-center gap-6">{tag} <Zap size={14} fill="white" /></span>
-                </React.Fragment>
+                <span key={idx} className="flex items-center gap-10">{tag.toUpperCase()} <span className="text-signal">◆</span></span>
               ))}
             </div>
           </div>
-          <p className="mt-8 text-slate-500 text-xs tracking-[0.5em] uppercase font-bold">© MMXXIV DIVO • ARCHITECTING THE FUTURE</p>
+          <p className="mt-8 dateline text-[10px] text-muted">© {new Date().getFullYear()} DIVO — FIELD DISPATCHES, ON THE HOUR</p>
         </footer>
       </main>
     </div>

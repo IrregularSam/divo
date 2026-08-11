@@ -26,16 +26,11 @@ export interface PortfolioItem {
   videoUrl?: string;
 }
 
-export interface Testimonial {
+export interface FieldLogEntry {
   id: string;
-  name: string;
-  role: string;
-  company: string;
-  text: string;
-  image: string;
-  quote: string;
-  author: string;
-  avatar: string;
+  time: string;
+  city: string;
+  entry: string;
 }
 
 export interface CaseStudyMedia {
