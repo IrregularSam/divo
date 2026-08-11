@@ -262,7 +262,7 @@ function App() {
             <div className="relative w-full max-w-md mx-auto md:mx-0">
               <div className="absolute -inset-4 bg-signal/10 blur-3xl -z-10"></div>
               <div className="aspect-[4/5] w-full overflow-hidden border border-line bg-surface">
-                <img src="/photos/divo-portrait-studio.png" alt="Divo" className="w-full h-full object-cover" />
+                <img src="/photos/divo-portrait-studio.png" alt="Divo" className="w-full h-full object-cover grayscale contrast-110" />
               </div>
             </div>
           </div>
@@ -274,7 +274,7 @@ function App() {
         <section id="about" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 scroll-mt-16">
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-20 items-start">
             <div className="aspect-[4/5] overflow-hidden border border-line bg-surface">
-              <img src="/photos/divo-portrait-outdoor.png" alt="Divo" className="w-full h-full object-cover" />
+              <img src="/photos/divo-portrait-outdoor.png" alt="Divo" className="w-full h-full object-cover grayscale contrast-110" />
             </div>
             <div>
               <p className="dateline text-[11px] text-signal mb-6">ABOUT ME</p>
