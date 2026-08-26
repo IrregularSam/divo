@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#14110D",
-        surface: "#1E1A15",
-        surface2: "#26211A",
-        paper: "#F3EEE4",
-        signal: "#E8952F",
-        data: "#2BBFA0",
-        muted: "#B8AFA0",
-        line: "#332C22",
+        ink: "#FAFAF9",
+        surface: "#F2F1EE",
+        surface2: "#E8E7E2",
+        paper: "#111111",
+        signal: "#111111",
+        data: "#5C5C57",
+        muted: "#767671",
+        line: "#DEDDD6",
       },
       fontFamily: {
         display: ["'Fraunces'", "serif"],

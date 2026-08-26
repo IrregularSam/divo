@@ -89,7 +89,6 @@ const Ticker: React.FC = () => {
         {doubled.map((entry, idx) => (
           <div key={idx} className="flex items-center gap-3 px-6 dateline text-[11px] text-muted">
             <span className="text-signal">{entry.time}</span>
-            <span className="text-data">{entry.city}</span>
             <span>{entry.entry}</span>
             <span className="text-line ml-3">///</span>
           </div>
@@ -222,48 +221,54 @@ function App() {
 
       <main className="relative z-10">
         {/* HERO */}
-        <section id="hero" className="min-h-screen flex items-center px-6 md:px-10 pt-28 pb-16 max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-14 md:gap-16 items-center w-full">
-            <div>
-              <div className="inline-flex items-center gap-2 dateline text-[11px] text-signal border border-signal/30 px-3 py-1.5 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse"></span>
-                AVAILABLE FOR WORK
-              </div>
-              <h1 className="text-5xl md:text-7xl font-display font-medium text-paper leading-[1.02] mb-6">
-                Hi, I'm Divo.<br />I make content people <span className="text-signal italic">actually watch.</span>
-              </h1>
-              <p className="text-lg text-muted max-w-lg mb-12 leading-relaxed">
-                Content strategist and creator working across Web3 and African markets — videos, threads, and campaigns
-                for teams who want their product explained clearly, not hyped.
-              </p>
-              <div className="flex flex-wrap items-center gap-6 mb-14">
-                <button onClick={() => scrollToSection('reel')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors flex items-center gap-2">
-                  SEE MY WORK <ArrowRight size={14} />
-                </button>
-                <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-paper border-b border-line hover:border-signal hover:text-signal transition-colors pb-1">
-                  GET IN TOUCH →
-                </button>
-              </div>
-              <div className="flex flex-wrap gap-10 pt-8 border-t border-line">
-                <div>
-                  <span className="text-3xl md:text-4xl font-display font-medium text-paper">150+</span>
-                  <p className="dateline text-[10px] text-muted mt-1">COMMUNITY BUILT</p>
-                </div>
-                <div>
-                  <span className="text-3xl md:text-4xl font-display font-medium text-paper">3+</span>
-                  <p className="dateline text-[10px] text-muted mt-1">YEARS IN WEB3</p>
-                </div>
-                <div>
-                  <span className="text-3xl md:text-4xl font-display font-medium text-paper">6</span>
-                  <p className="dateline text-[10px] text-muted mt-1">PROTOCOLS WORKED WITH</p>
-                </div>
-              </div>
+        <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-32 pb-16 max-w-6xl mx-auto w-full">
+          <div className="flex items-start justify-between mb-6">
+            <div className="dateline text-[11px] text-muted leading-relaxed">
+              <p>CONTENT THAT MOVES</p>
+              <p>WITH PURPOSE.</p>
             </div>
-            <div className="relative w-full max-w-md mx-auto md:mx-0">
-              <div className="absolute -inset-4 bg-signal/10 blur-3xl -z-10"></div>
-              <div className="aspect-[4/5] w-full overflow-hidden border border-line bg-surface">
-                <img src="/photos/divo-portrait-studio.png" alt="Divo" className="w-full h-full object-cover grayscale contrast-110" />
-              </div>
+            <div className="dateline text-[11px] text-muted text-right leading-relaxed hidden md:block">
+              <p>SELECTED WORK</p>
+              <p>{new Date().getFullYear()}</p>
+            </div>
+          </div>
+
+          <div className="relative flex items-end justify-center select-none -mx-6 md:-mx-10">
+            <h1 className="font-display font-medium leading-[0.8] text-paper text-[19vw] md:text-[11.5vw] tracking-tight z-0">DI</h1>
+            <img
+              src="/photos/divo-hero-cutout.png"
+              alt="Divo"
+              className="relative z-10 h-[54vw] md:h-[34vw] max-h-[560px] w-auto object-contain grayscale contrast-110 -mx-1 md:-mx-3"
+            />
+            <h1 className="font-display font-medium leading-[0.8] text-paper text-[19vw] md:text-[11.5vw] tracking-tight z-0">VO</h1>
+          </div>
+
+          <p className="text-center text-muted max-w-lg mx-auto mt-8 mb-10 leading-relaxed">
+            Content strategist and creator working across Web3 and African markets — videos, threads, and campaigns
+            for teams who want their product explained clearly, not hyped.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-16">
+            <button onClick={() => scrollToSection('reel')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors flex items-center gap-2">
+              SEE MY WORK <ArrowRight size={14} />
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-paper border-b border-line hover:border-signal hover:text-signal transition-colors pb-1">
+              GET IN TOUCH →
+            </button>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 pt-8 border-t border-line">
+            <div className="text-center">
+              <span className="text-3xl md:text-4xl font-display font-medium text-paper">150+</span>
+              <p className="dateline text-[10px] text-muted mt-1">COMMUNITY BUILT</p>
+            </div>
+            <div className="text-center">
+              <span className="text-3xl md:text-4xl font-display font-medium text-paper">3+</span>
+              <p className="dateline text-[10px] text-muted mt-1">YEARS IN WEB3</p>
+            </div>
+            <div className="text-center">
+              <span className="text-3xl md:text-4xl font-display font-medium text-paper">6</span>
+              <p className="dateline text-[10px] text-muted mt-1">PROTOCOLS WORKED WITH</p>
             </div>
           </div>
         </section>
@@ -274,19 +279,18 @@ function App() {
         <section id="about" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 scroll-mt-16">
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-20 items-start">
             <div className="aspect-[4/5] overflow-hidden border border-line bg-surface">
-              <img src="/photos/divo-portrait-outdoor.png" alt="Divo" className="w-full h-full object-cover grayscale contrast-110" />
+              <img src="/photos/divo-portrait-studio.png" alt="Divo" className="w-full h-full object-cover grayscale contrast-110" />
             </div>
             <div>
               <p className="dateline text-[11px] text-signal mb-6">ABOUT ME</p>
               <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-8 leading-tight">
-                Based in Lagos, working with builders across Africa and beyond.
+                Working with builders across Africa and beyond.
               </h2>
               <div className="space-y-4 text-muted leading-relaxed mb-10">
                 <p>I got into Web3 content because most of it is either hype or homework — nothing in between. My work sits in that gap: clear enough for a newcomer, accurate enough for the team's own engineers.</p>
-                <p>Most of what I do is African growth work — getting developers in Lagos, Nairobi, and beyond to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
+                <p>Most of what I do is African growth work — getting developers to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
               </div>
               <div className="grid grid-cols-2 gap-6 dateline text-[11px] border-t border-line pt-6">
-                <div><span className="text-muted block mb-1">BASE</span><span className="text-paper">Lagos, NG</span></div>
                 <div><span className="text-muted block mb-1">FOCUS</span><span className="text-paper">Web3 Growth + African Expansion</span></div>
                 <div><span className="text-muted block mb-1">SINCE</span><span className="text-paper">2023</span></div>
                 <div><span className="text-muted block mb-1">STATUS</span><span className="text-paper">Open to roles</span></div>
@@ -457,7 +461,7 @@ function App() {
               ))}
             </div>
           </div>
-          <p className="mt-8 dateline text-[10px] text-muted">© {new Date().getFullYear()} DIVO — LAGOS, NIGERIA</p>
+          <p className="mt-8 dateline text-[10px] text-muted">© {new Date().getFullYear()} DIVO</p>
         </footer>
       </main>
     </div>

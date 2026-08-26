@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-html { background: #14110D; }
-body { background: #14110D; }
+html { background: #FAFAF9; }
+body { background: #FAFAF9; }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #14110D; }
-::-webkit-scrollbar-thumb { background: #332C22; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #E8952F; }
+::-webkit-scrollbar-track { background: #FAFAF9; }
+::-webkit-scrollbar-thumb { background: #DEDDD6; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #111111; }
 
 .dateline {
   font-family: 'IBM Plex Mono', monospace;
@@ -24,7 +24,7 @@ body { background: #14110D; }
 }
 
 .card-hover { transition: border-color 0.3s ease, transform 0.3s ease; }
-.card-hover:hover { border-color: #E8952F; transform: translateY(-3px); }
+.card-hover:hover { border-color: #111111; transform: translateY(-3px); }
 
 .underline-grow { position: relative; }
 .underline-grow::after {
@@ -32,7 +32,7 @@ body { background: #14110D; }
   position: absolute;
   left: 0; bottom: -4px;
   width: 0; height: 1px;
-  background: #E8952F;
+  background: #111111;
   transition: width 0.35s ease;
 }
 .underline-grow:hover::after { width: 100%; }

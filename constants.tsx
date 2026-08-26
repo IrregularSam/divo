@@ -427,12 +427,12 @@ export const TOOLS = [
 // NOTE FOR DIVO: These entries should be real, dated milestones you can stand behind.
 // Edit freely — add real dates/cities as they happen. Keep it factual; no invented quotes.
 export const FIELD_LOG: FieldLogEntry[] = [
-  { id: '1', time: 'WK 1', city: 'LAGOS, NG', entry: 'Vara Network African ambassador program kicks off.' },
-  { id: '2', time: 'WK 6', city: 'LAGOS, NG', entry: 'Builder community crosses 150 active members — zero paid ads.' },
-  { id: '3', time: 'ONGOING', city: 'NAIROBI, KE', entry: 'Developer workshops run alongside Web3 Nigeria & Onchain Society.' },
+  { id: '1', time: 'WK 1', city: 'PARTNERSHIP', entry: 'Vara Network African ambassador program kicks off.' },
+  { id: '2', time: 'WK 6', city: 'MILESTONE', entry: 'Builder community crosses 150 active members — zero paid ads.' },
+  { id: '3', time: 'ONGOING', city: 'COMMUNITY', entry: 'Developer workshops run alongside Web3 Nigeria & Onchain Society.' },
   { id: '4', time: 'ONGOING', city: 'REMOTE', entry: 'Selected for Kamino Finance\u2019s Confluence content cohort.' },
   { id: '5', time: 'ONGOING', city: 'REMOTE', entry: 'Solflare Guardian — community security & education.' },
-  { id: '6', time: 'ONGOING', city: 'LAGOS, NG', entry: 'Co-founded VaraNames, first naming protocol on Vara.' },
+  { id: '6', time: 'ONGOING', city: 'LAUNCH', entry: 'Co-founded VaraNames, first naming protocol on Vara.' },
 ];
 
 export const MARQUEE_TAGS = [
