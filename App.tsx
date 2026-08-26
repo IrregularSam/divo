@@ -11,12 +11,14 @@ import {
   Send,
   Twitter,
   Mail,
-  Radio
+  Radio,
+  Sun,
+  Moon
 } from 'lucide-react';
 import {
   SERVICES,
   EXPERIENCE,
-  PORTFOLIO,
+  TWEETS,
   TOOLS,
   FOOTER_TAGS,
   CASE_STUDIES,
@@ -34,12 +36,28 @@ const NAV_ITEMS = [
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('divo-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const dark = stored ? stored === 'dark' : prefersDark;
+    setIsDark(dark);
+    document.documentElement.classList.toggle('dark', dark);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('divo-theme', next ? 'dark' : 'light');
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -70,12 +88,21 @@ const Navbar: React.FC = () => {
             </button>
           ))}
         </div>
-        <button
-          onClick={() => scrollToSection('contact')}
-          className="dateline text-[11px] border border-line text-paper px-4 py-2 hover:border-signal hover:text-signal transition-colors"
-        >
-          CONTACT →
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+            className="w-9 h-9 flex items-center justify-center border border-line text-paper hover:border-signal hover:text-signal transition-colors"
+          >
+            {isDark ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="dateline text-[11px] border border-line text-paper px-4 py-2 hover:border-signal hover:text-signal transition-colors"
+          >
+            CONTACT →
+          </button>
+        </div>
       </div>
     </nav>
   );
@@ -94,6 +121,50 @@ const Ticker: React.FC = () => {
           </div>
         ))}
       </div>
+    </div>
+  );
+};
+
+declare global {
+  interface Window {
+    twttr?: {
+      widgets: { load: (el?: HTMLElement) => void };
+    };
+  }
+}
+
+const TweetEmbed: React.FC<{ url: string }> = ({ url }) => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadWidget = () => {
+      if (window.twttr && window.twttr.widgets && containerRef.current) {
+        window.twttr.widgets.load(containerRef.current);
+      }
+    };
+
+    if (window.twttr) {
+      loadWidget();
+    } else {
+      const existing = document.getElementById('twitter-wjs');
+      if (!existing) {
+        const script = document.createElement('script');
+        script.id = 'twitter-wjs';
+        script.src = 'https://platform.twitter.com/widgets.js';
+        script.async = true;
+        script.onload = loadWidget;
+        document.body.appendChild(script);
+      } else {
+        existing.addEventListener('load', loadWidget);
+      }
+    }
+  }, [url]);
+
+  return (
+    <div ref={containerRef} className="tweet-embed-wrap w-full flex justify-center">
+      <blockquote className="twitter-tweet" data-theme="light" data-dnt="true">
+        <a href={url}></a>
+      </blockquote>
     </div>
   );
 };
@@ -221,43 +292,35 @@ function App() {
 
       <main className="relative z-10">
         {/* HERO */}
-        <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-32 pb-16 max-w-6xl mx-auto w-full">
-          <div className="flex items-start justify-between mb-6">
-            <div className="dateline text-[11px] text-muted leading-relaxed">
-              <p>CONTENT THAT MOVES</p>
-              <p>WITH PURPOSE.</p>
+        <section id="hero" className="max-w-6xl mx-auto px-6 md:px-10 pt-32 pb-16 w-full">
+          <div className="relative rounded-3xl border border-line bg-surface overflow-hidden">
+            <div className="relative h-[340px] md:h-[440px] flex justify-center items-start pt-6 md:pt-8">
+              <img
+                src="/photos/divo-hero-fade.png"
+                alt="Divo"
+                className="h-full w-auto object-contain grayscale contrast-110 select-none"
+              />
             </div>
-            <div className="dateline text-[11px] text-muted text-right leading-relaxed hidden md:block">
-              <p>SELECTED WORK</p>
-              <p>{new Date().getFullYear()}</p>
+            <div className="relative px-8 md:px-12 pb-10 -mt-2 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+              <h1 className="text-3xl md:text-5xl font-display font-medium text-paper leading-tight max-w-xl">
+                Divo makes content that explains, not hypes.
+              </h1>
+              <div className="max-w-xs">
+                <p className="text-muted leading-relaxed mb-5">
+                  Content strategist and creator working across Web3 and African markets — videos, threads, and campaigns
+                  for teams who want clarity, not noise.
+                </p>
+                <button onClick={() => scrollToSection('reel')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors inline-flex items-center gap-2">
+                  SEE MY WORK <ArrowRight size={14} />
+                </button>
+                <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-muted hover:text-signal transition-colors ml-5 underline-grow">
+                  or get in touch →
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="relative flex items-end justify-center select-none -mx-6 md:-mx-10">
-            <h1 className="font-display font-medium leading-[0.8] text-paper text-[19vw] md:text-[11.5vw] tracking-tight z-0">DI</h1>
-            <img
-              src="/photos/divo-hero-cutout.png"
-              alt="Divo"
-              className="relative z-10 h-[54vw] md:h-[34vw] max-h-[560px] w-auto object-contain grayscale contrast-110 -mx-1 md:-mx-3"
-            />
-            <h1 className="font-display font-medium leading-[0.8] text-paper text-[19vw] md:text-[11.5vw] tracking-tight z-0">VO</h1>
-          </div>
-
-          <p className="text-center text-muted max-w-lg mx-auto mt-8 mb-10 leading-relaxed">
-            Content strategist and creator working across Web3 and African markets — videos, threads, and campaigns
-            for teams who want their product explained clearly, not hyped.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-6 mb-16">
-            <button onClick={() => scrollToSection('reel')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors flex items-center gap-2">
-              SEE MY WORK <ArrowRight size={14} />
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-paper border-b border-line hover:border-signal hover:text-signal transition-colors pb-1">
-              GET IN TOUCH →
-            </button>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 pt-8 border-t border-line">
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 pt-10 mt-10 border-t border-line">
             <div className="text-center">
               <span className="text-3xl md:text-4xl font-display font-medium text-paper">150+</span>
               <p className="dateline text-[10px] text-muted mt-1">COMMUNITY BUILT</p>
@@ -372,37 +435,14 @@ function App() {
           </div>
         </section>
 
-        {/* BROADCAST REEL (Portfolio/Work) */}
+        {/* CONTENT (X posts) */}
         <section id="reel" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 border-t border-line scroll-mt-16">
           <p className="dateline text-[11px] text-signal mb-4">SELECTED CUTS</p>
           <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">My content</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PORTFOLIO.map((item, idx) => (
-              <div
-                key={idx}
-                className="group relative aspect-video bg-surface border border-line overflow-hidden"
-                onMouseEnter={() => setHoveredWork(idx)}
-                onMouseLeave={() => setHoveredWork(null)}
-              >
-                {item.videoUrl && hoveredWork === idx ? (
-                  <iframe
-                    src={`${item.videoUrl}?autoplay=1&mute=1&rel=0&modestbranding=1&controls=0`}
-                    title={item.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full border-0"
-                  ></iframe>
-                ) : (
-                  <>
-                    <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover opacity-50 grayscale group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-500" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Play size={28} className="text-signal opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" />
-                    </div>
-                  </>
-                )}
-                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-ink via-ink/70 to-transparent pointer-events-none">
-                  <p className="text-paper font-display font-medium text-sm leading-tight">{item.title}</p>
-                </div>
+            {TWEETS.map((tweet, idx) => (
+              <div key={idx} className="bg-surface border border-line p-2 flex justify-center">
+                <TweetEmbed url={tweet.url} />
               </div>
             ))}
           </div>

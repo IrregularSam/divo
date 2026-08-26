@@ -26,6 +26,10 @@ export interface PortfolioItem {
   videoUrl?: string;
 }
 
+export interface TweetItem {
+  url: string;
+}
+
 export interface FieldLogEntry {
   id: string;
   time: string;

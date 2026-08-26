@@ -1,17 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./App.tsx", "./index.tsx", "./constants.tsx"],
   theme: {
     extend: {
       colors: {
-        ink: "#FAFAF9",
-        surface: "#F2F1EE",
-        surface2: "#E8E7E2",
-        paper: "#111111",
-        signal: "#111111",
-        data: "#5C5C57",
-        muted: "#767671",
-        line: "#DEDDD6",
+        ink: "rgb(var(--color-ink) / <alpha-value>)",
+        surface: "rgb(var(--color-surface) / <alpha-value>)",
+        surface2: "rgb(var(--color-surface2) / <alpha-value>)",
+        paper: "rgb(var(--color-paper) / <alpha-value>)",
+        signal: "rgb(var(--color-signal) / <alpha-value>)",
+        data: "rgb(var(--color-data) / <alpha-value>)",
+        muted: "rgb(var(--color-muted) / <alpha-value>)",
+        line: "rgb(var(--color-line) / <alpha-value>)",
       },
       fontFamily: {
         display: ["'Fraunces'", "serif"],

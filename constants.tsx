@@ -14,7 +14,7 @@ import {
   CheckCircle2,
   Box
 } from 'lucide-react';
-import { Service, Skill, WorkExperience, PortfolioItem, FieldLogEntry, CaseStudy } from './types';
+import { Service, Skill, WorkExperience, PortfolioItem, TweetItem, FieldLogEntry, CaseStudy } from './types';
 
 export const SERVICES: Service[] = [
   { 
@@ -345,72 +345,17 @@ export const EXPERIENCE: WorkExperience[] = [
   }
 ];
 
-export const PORTFOLIO: PortfolioItem[] = [
-  { 
-    title: 'How To Become A Master Storyteller', 
-    thumbnail: 'https://img.youtube.com/vi/t5Z-Q1bg1tU/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/t5Z-Q1bg1tU'
-  },
-  { 
-    title: 'How I Grew from 0 to 100K Subscribers in 5 Months', 
-    thumbnail: 'https://img.youtube.com/vi/3y-WiiUaqb4/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/3y-WiiUaqb4'
-  },
-  { 
-    title: 'How I Got 46 Million Views From ONE Short-Form Video', 
-    thumbnail: 'https://img.youtube.com/vi/VEcU_VnlX7c/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/VEcU_VnlX7c'
-  },
-  { 
-    title: 'Give me 18 minutes, and I’ll improve your video by 193%', 
-    thumbnail: 'https://img.youtube.com/vi/i7upRL4H1FM/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/i7upRL4H1FM'
-  },
-  { 
-    title: 'How to Master the Art of Speaking', 
-    thumbnail: 'https://img.youtube.com/vi/35SPFdc1eXY/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/35SPFdc1eXY'
-  },
-  { 
-    title: 'I Tested 100+ AI Tools, These 9 Will Blow Up Your Content', 
-    thumbnail: 'https://img.youtube.com/vi/_SpyH8wTA-4/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/_SpyH8wTA-4'
-  },
-  { 
-    title: 'How to Create Any Content 10x Faster With AI', 
-    thumbnail: 'https://img.youtube.com/vi/1q__Vs2JqbI/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/1q__Vs2JqbI'
-  },
-  { 
-    title: 'Scientists just invented a new way to make videos with AI', 
-    thumbnail: 'https://img.youtube.com/vi/_OWTCNMBS18/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/_OWTCNMBS18'
-  },
-  { 
-    title: 'The latest humanoid robots are starting to feel like Black Mirror', 
-    thumbnail: 'https://img.youtube.com/vi/03ouiRN5RaQ/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/03ouiRN5RaQ'
-  },
-  { 
-    title: 'This is the god-tier AI tool for building an ecom brand', 
-    thumbnail: 'https://img.youtube.com/vi/gY4RStb0pnI/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/gY4RStb0pnI'
-  },
-  { 
-    title: 'OpenAI just launched their own social platform', 
-    thumbnail: 'https://img.youtube.com/vi/4shKz-CsqDw/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/4shKz-CsqDw'
-  },
-  { 
-    title: "Why Your Content Isn't Getting Views", 
-    thumbnail: 'https://img.youtube.com/vi/vX-inQa3MKk/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/vX-inQa3MKk'
-  },
-  { 
-    title: 'Why Most Creators Fail in 2024', 
-    thumbnail: 'https://img.youtube.com/vi/tVZOS5Z019U/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/tVZOS5Z019U'
-  },
+export const TWEETS: TweetItem[] = [
+  { url: 'https://x.com/Divo_Creates/status/1973803585348481259' },
+  { url: 'https://x.com/Divo_Creates/status/1920799697318371459' },
+  { url: 'https://x.com/Divo_Creates/status/1919202618288787682' },
+  { url: 'https://x.com/Divo_Creates/status/1918971546023973269' },
+  { url: 'https://x.com/Divo_Creates/status/1912223563077284112' },
+  { url: 'https://x.com/Divo_Creates/status/1910411801084277004' },
+  { url: 'https://x.com/Divo_Creates/status/1862647146551415050' },
+  { url: 'https://x.com/Divo_Creates/status/1861766832278978856' },
+  { url: 'https://x.com/Divo_Creates/status/1858283295483511091' },
+  { url: 'https://x.com/Divo_Creates/status/1852045809933783348' },
 ];
 
 export const TOOLS = [
