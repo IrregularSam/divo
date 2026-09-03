@@ -13,7 +13,8 @@ import {
   Mail,
   Radio,
   Sun,
-  Moon
+  Moon,
+  Linkedin
 } from 'lucide-react';
 import {
   SERVICES,
@@ -133,8 +134,40 @@ declare global {
   }
 }
 
+const useIsDark = () => {
+  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'));
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setDark(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+  return dark;
+};
+
+const VisitorCounter: React.FC = () => {
+  const [count, setCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch('https://tally.yuki.sh/hits/divocreates/portfolio.json')
+      .then((res) => res.json())
+      .then((data: { visit: number }) => setCount(data.visit + 1036))
+      .catch(() => setCount(null));
+  }, []);
+
+  if (count === null) return null;
+
+  return (
+    <p className="dateline text-[10px] text-muted">
+      YOU'RE VISITOR #{count.toLocaleString()}
+    </p>
+  );
+};
+
 const TweetEmbed: React.FC<{ url: string }> = ({ url }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const isDark = useIsDark();
 
   useEffect(() => {
     const loadWidget = () => {
@@ -158,12 +191,14 @@ const TweetEmbed: React.FC<{ url: string }> = ({ url }) => {
         existing.addEventListener('load', loadWidget);
       }
     }
-  }, [url]);
+  }, [url, isDark]);
 
   return (
-    <div ref={containerRef} className="tweet-embed-wrap w-full flex justify-center">
-      <blockquote className="twitter-tweet" data-theme="light" data-dnt="true">
-        <a href={url}></a>
+    <div key={isDark ? 'dark' : 'light'} ref={containerRef} className="tweet-embed-wrap w-full flex justify-center">
+      <blockquote className="twitter-tweet" data-theme={isDark ? 'dark' : 'light'} data-dnt="true">
+        <a href={url} target="_blank" rel="noopener noreferrer" className="dateline text-[11px] text-muted hover:text-signal">
+          View post on X ↗
+        </a>
       </blockquote>
     </div>
   );
@@ -293,31 +328,42 @@ function App() {
       <main className="relative z-10">
         {/* HERO */}
         <section id="hero" className="max-w-6xl mx-auto px-6 md:px-10 pt-32 pb-16 w-full">
-          <div className="relative rounded-3xl border border-line bg-surface overflow-hidden">
-            <div className="relative h-[340px] md:h-[440px] flex justify-center items-start pt-6 md:pt-8">
-              <img
-                src="/photos/divo-hero-fade.png"
-                alt="Divo"
-                className="h-full w-auto object-contain grayscale contrast-110 select-none"
-              />
-            </div>
-            <div className="relative px-8 md:px-12 pb-10 -mt-2 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-              <h1 className="text-3xl md:text-5xl font-display font-medium text-paper leading-tight max-w-xl">
-                Divo makes content that explains, not hypes.
-              </h1>
-              <div className="max-w-xs">
-                <p className="text-muted leading-relaxed mb-5">
-                  Content strategist and creator working across Web3 and African markets — videos, threads, and campaigns
-                  for teams who want clarity, not noise.
-                </p>
-                <button onClick={() => scrollToSection('reel')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors inline-flex items-center gap-2">
-                  SEE MY WORK <ArrowRight size={14} />
-                </button>
-                <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-muted hover:text-signal transition-colors ml-5 underline-grow">
-                  or get in touch →
-                </button>
+          <div className="relative rounded-3xl border border-line bg-surface overflow-hidden grid md:grid-cols-2">
+            <div className="relative z-10 p-8 md:p-14 flex flex-col justify-between min-h-[300px] md:min-h-[560px] order-2 md:order-1">
+              <p className="dateline text-[11px] text-muted">GROWTH & MARKETING</p>
+              <div className="py-8 md:py-0">
+                <h1 className="text-6xl md:text-7xl font-display font-medium text-paper leading-[0.92] mb-6">
+                  Divo<br />Creates.
+                </h1>
+                <div className="w-14 border-t-2 border-signal mb-4"></div>
+                <p className="text-muted mb-8 max-w-xs">Content, campaigns, and community growth built to convert.</p>
+                <div>
+                  <p className="text-paper font-display font-medium text-lg">Samuel Dahunsi</p>
+                  <p className="dateline text-[10px] text-muted mt-1">GROWTH & MARKETING LEAD</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 dateline text-[10px] text-muted">
+                <span>SELECTED WORK</span>
+                <span className="flex-1 h-px bg-line"></span>
+                <span>{new Date().getFullYear()}</span>
               </div>
             </div>
+            <div className="relative h-[280px] md:h-auto order-1 md:order-2">
+              <img
+                src="/photos/divo-portrait-studio.png"
+                alt="Divo"
+                className="absolute inset-0 w-full h-full object-cover object-top grayscale contrast-110"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-10">
+            <button onClick={() => scrollToSection('reel')} className="dateline text-xs bg-signal text-ink px-6 py-3 hover:bg-paper transition-colors inline-flex items-center gap-2">
+              SEE MY WORK <ArrowRight size={14} />
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="dateline text-xs text-muted hover:text-signal transition-colors underline-grow">
+              or get in touch →
+            </button>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 pt-10 mt-10 border-t border-line">
@@ -350,11 +396,11 @@ function App() {
                 Working with builders across Africa and beyond.
               </h2>
               <div className="space-y-4 text-muted leading-relaxed mb-10">
-                <p>I got into Web3 content because most of it is either hype or homework — nothing in between. My work sits in that gap: clear enough for a newcomer, accurate enough for the team's own engineers.</p>
-                <p>Most of what I do is African growth work — getting developers to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
+                <p>I got into Web3 marketing because most of it is either hype or homework, nothing in between. My work sits in that gap: clear enough for a newcomer, credible enough for the team's own engineers.</p>
+                <p>Most of what I do is African growth work: getting developers to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
               </div>
               <div className="grid grid-cols-2 gap-6 dateline text-[11px] border-t border-line pt-6">
-                <div><span className="text-muted block mb-1">FOCUS</span><span className="text-paper">Web3 Growth + African Expansion</span></div>
+                <div><span className="text-muted block mb-1">FOCUS</span><span className="text-paper">Growth & Marketing</span></div>
                 <div><span className="text-muted block mb-1">SINCE</span><span className="text-paper">2023</span></div>
                 <div><span className="text-muted block mb-1">STATUS</span><span className="text-paper">Open to roles</span></div>
               </div>
@@ -419,7 +465,7 @@ function App() {
                 <p className="dateline text-[10px] text-data mb-4">{study.type.toUpperCase()}</p>
                 <h3 className="text-2xl font-display font-medium text-paper mb-3 leading-tight">{study.title}</h3>
                 <p className="text-muted text-sm mb-8 leading-relaxed">{study.description}</p>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-6">
                   <div className="flex gap-4">
                     {study.metrics.slice(0, 2).map((m, i) => (
                       <div key={i}>
@@ -428,7 +474,10 @@ function App() {
                       </div>
                     ))}
                   </div>
-                  <ArrowUpRight size={20} className="text-muted group-hover:text-signal transition-colors" />
+                </div>
+                <div className="flex items-center gap-2 dateline text-[10px] text-signal pt-5 border-t border-line group-hover:gap-3 transition-all">
+                  VIEW CASE STUDY
+                  <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </button>
             ))}
@@ -480,6 +529,9 @@ function App() {
           </a>
 
           <div className="flex flex-wrap items-center gap-6 mb-16">
+            <a href="https://linkedin.com/in/samuel-dahunsi-" target="_blank" rel="noopener noreferrer" className="dateline text-xs text-muted hover:text-signal transition-colors flex items-center gap-2">
+              <Linkedin size={16} /> LINKEDIN
+            </a>
             <a href="https://discord.com/users/divo_51920" target="_blank" rel="noopener noreferrer" className="dateline text-xs text-muted hover:text-signal transition-colors flex items-center gap-2">
               <MessageCircle size={16} /> DISCORD
             </a>
@@ -502,6 +554,9 @@ function App() {
             </div>
           </div>
           <p className="mt-8 dateline text-[10px] text-muted">© {new Date().getFullYear()} DIVO</p>
+          <div className="mt-2">
+            <VisitorCounter />
+          </div>
         </footer>
       </main>
     </div>

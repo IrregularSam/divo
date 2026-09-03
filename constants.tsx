@@ -20,7 +20,7 @@ export const SERVICES: Service[] = [
   { 
     id: '1', 
     title: 'Content Strategy', 
-    description: 'I help Web3 teams define how their product is explained and understood. This includes messaging direction, narrative structure, and content systems that align with product and growth goals. The focus is clarity first — no hype, no confusion.', 
+    description: 'I help Web3 teams define how their product is explained and understood. This includes messaging direction, narrative structure, and content systems that align with product and growth goals. The focus is clarity first: no hype, no confusion.', 
     icon: 'Briefcase' 
   },
   { 
@@ -32,7 +32,7 @@ export const SERVICES: Service[] = [
   { 
     id: '3', 
     title: 'Video & UGC Content', 
-    description: 'I create product walkthroughs, explainer videos, and UGC-style content designed for social distribution. Everything is built to feel native, engaging, and easy to understand — whether for launches, education, or ongoing growth.', 
+    description: 'I create product walkthroughs, explainer videos, and UGC-style content designed for social distribution. Everything is built to feel native and easy to understand, whether for launches, education, or ongoing growth.', 
     icon: 'Film' 
   },
   { 
@@ -78,7 +78,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: '1',
     type: 'Ecosystem Content Series',
     title: 'Solana Real-Time Reporting Engine',
-    description: 'A daily series that turns scattered Solana ecosystem updates into one clear read — built for builders who don\'t have hours to spend scrolling.',
+    description: 'A daily series that turns scattered Solana ecosystem updates into one clear read, built for builders who don\'t have hours to spend scrolling.',
     tags: ['Solana', 'Data Curation', 'Strategy'],
     header: 'Everything That Happened in the Last 24 Hours in the Solana Ecosystem',
     bannerImage: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1200',
@@ -93,13 +93,13 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Daily Output', value: '20+', subtext: 'High-signal updates' },
       { label: 'Sentiment', value: '98%', subtext: 'Positive builder feedback' }
     ],
-    executiveSummary: 'Solana ecosystem news was scattered across GitHub, Discord, governance forums, and a thousand competing Twitter threads. I built a daily series that pulled the real updates into one clear post — something founders, VCs, and developers could read in a couple of minutes instead of scrolling for an hour.',
-    marketContext: 'Solana moves fast. Thousands of active developers, new projects launching every week — the sheer volume made it genuinely hard to tell a real protocol upgrade from marketing noise without spending hours on it daily.',
-    theChallenge: 'Real updates — infra changes, governance votes, liquidity shifts — kept getting buried under engagement-bait content. There wasn\'t a daily briefing that respected people\'s time while still going deep enough to actually be useful.',
+    executiveSummary: 'Solana ecosystem news was scattered across GitHub, Discord, governance forums, and a thousand competing Twitter threads. I built a daily series that pulled the real updates into one clear post: something founders, VCs, and developers could read in a couple of minutes instead of scrolling for an hour.',
+    marketContext: 'Solana moves fast, with thousands of active developers and new projects launching every week. That volume made it genuinely hard to tell a real protocol upgrade from marketing noise without spending hours on it daily.',
+    theChallenge: 'Real updates (infra changes, governance votes, liquidity shifts) kept getting buried under engagement-bait content. There wasn\'t a daily briefing that respected people\'s time while still going deep enough to actually be useful.',
     strategicDeepDive: {
       title: 'How I approached it',
       points: [
-        { label: 'Verification first', content: 'Cross-checked every update against GitHub commits and on-chain activity before it went out — no repeating unconfirmed claims.' },
+        { label: 'Verification first', content: 'Cross-checked every update against GitHub commits and on-chain activity before it went out. No repeating unconfirmed claims.' },
         { label: 'Ruthless editing', content: 'Turned long technical posts into a few lines that took seconds to read, without losing the part that actually mattered.' },
         { label: 'Same time, every day', content: 'Kept a consistent publishing window so it became part of people\'s morning routine instead of something they had to remember to check.' }
       ]
@@ -108,7 +108,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: 'video', url: 'https://www.youtube.com/embed/vX-inQa3MKk', caption: 'Ecosystem Analysis Video' },
       { type: 'image', url: 'https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&q=80&w=800', caption: 'Visual representation of information flow' }
     ],
-    comprehensiveExecution: 'I tracked over 150 sources — developer Discords, GitHub repos, governance forums — and for every update asked one question: why does this matter to the user? Kept the daily cadence going without missing a day.',
+    comprehensiveExecution: 'I tracked over 150 sources (developer Discords, GitHub repos, governance forums) and for every update asked one question: why does this matter to the user? Kept the daily cadence going without missing a day.',
     impactReport: {
       narrative: 'The series ended up getting referenced in project discussions as a quick way to catch up on what was actually happening across the ecosystem.',
       achievements: [
@@ -137,13 +137,13 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Engagement', value: '4.5%', subtext: 'Above industry average' },
       { label: 'Retain', value: '92%', subtext: 'Campaign completion rate' }
     ],
-    executiveSummary: 'Liquid staking is a core DeFi primitive, but it\'s intimidating if you\'ve never touched it before. I ran a 30-day campaign that broke Marinade\'s value prop into small, specific reasons to stake — one idea a day instead of one long explainer nobody would finish.',
+    executiveSummary: 'Liquid staking is a core DeFi primitive, but it\'s intimidating if you\'ve never touched it before. I ran a 30-day campaign that broke Marinade\'s value prop into small, specific reasons to stake: one idea a day instead of one long explainer nobody would finish.',
     marketContext: 'Liquid staking tokens matter for a healthy DeFi ecosystem, but back in 2023 a lot of users saw mSOL as risky or complicated and just stuck to native staking. There wasn\'t much content actually explaining how it works.',
-    theChallenge: 'Marinade\'s existing docs were built for power users, not newcomers. The real challenge was turning a native staker into someone who understands and actually uses mSOL — without writing a 2,000-word technical explainer nobody reads.',
+    theChallenge: 'Marinade\'s existing docs were built for power users, not newcomers. The real challenge was turning a native staker into someone who understands and actually uses mSOL, without writing a 2,000-word technical explainer nobody reads.',
     strategicDeepDive: {
       title: 'How I approached it',
       points: [
-        { label: 'One idea a day', content: 'Picked a single benefit — liquidity, tax efficiency, decentralization — each day so nobody had to process too much at once.' },
+        { label: 'One idea a day', content: 'Picked a single benefit (liquidity, tax efficiency, decentralization) each day so nobody had to process too much at once.' },
         { label: 'Visual comparisons', content: 'Built simple visuals comparing staking to financial concepts people already understood.' },
         { label: 'Real feedback', content: 'Wove in actual community comments and yield examples instead of just theory.' }
       ]
@@ -154,7 +154,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     comprehensiveExecution: 'The calendar moved from passive yield (days 1–10) to composability (11–20) to governance and security (21–30). Around day 15 I noticed people were worried about smart contract risk, so I adjusted the messaging to address that directly instead of avoiding it.',
     impactReport: {
-      narrative: 'By the end, the questions in the comments had shifted from "how does this work?" to "where else can I use mSOL?" — which was really the goal.',
+      narrative: 'By the end, the questions in the comments had shifted from "how does this work?" to "where else can I use mSOL?" That shift was really the goal.',
       achievements: [
         '30 straight days without a drop in engagement.',
         'Referenced by a few ecosystem folks as a solid example of DeFi education.',
@@ -168,7 +168,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'The deBridge Feature Spotlight',
     description: 'Turned dense cross-chain documentation into feature walkthroughs people could actually follow, one at a time.',
     tags: ['Cross-Chain', 'Infra', 'Technical Marketing'],
-    header: 'Exploring deBridge — One Feature at a Time',
+    header: 'Exploring deBridge: One Feature at a Time',
     bannerImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1200',
     metadata: {
       project: 'Infrastructure Adoption',
@@ -181,14 +181,14 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Feature Awareness', value: '2x', subtext: 'Growth in specific tool use' },
       { label: 'Bounce Rate', value: '-15%', subtext: 'On product landing pages' }
     ],
-    executiveSummary: 'Infrastructure is invisible until it breaks — and after a wave of bridge hacks, people were understandably nervous about moving assets cross-chain. For deBridge, I built a content series that made the tech feel less abstract and more trustworthy.',
-    marketContext: 'The market was full of generic "fast and cheap" bridge marketing. What people actually wanted was "safe and professional" — they just had no way to verify those claims themselves.',
-    theChallenge: 'deBridge has real technical advantages — sub-second settlement, intent-based routing — but explaining them usually requires a CS background. The challenge was making these features make sense to someone who just wants their assets to move safely.',
+    executiveSummary: 'Infrastructure is invisible until it breaks. After a wave of bridge hacks, people were understandably nervous about moving assets cross-chain, so for deBridge I built a content series that made the tech feel less abstract and more trustworthy.',
+    marketContext: 'The market was full of generic "fast and cheap" bridge marketing. What people actually wanted was "safe and professional." They just had no way to verify those claims themselves.',
+    theChallenge: 'deBridge has real technical advantages (sub-second settlement, intent-based routing), but explaining them usually requires a CS background. The challenge was making these features make sense to someone who just wants their assets to move safely.',
     strategicDeepDive: {
       title: 'How I approached it',
       points: [
         { label: 'Use-case first', content: 'Instead of "routing logic," I explained it as "how to catch a price dip on Base using Solana assets."' },
-        { label: 'Talking about risk directly', content: 'Addressed security head-on instead of avoiding it — treated it as a selling point, not a liability.' },
+        { label: 'Talking about risk directly', content: 'Addressed security head-on instead of avoiding it, treating it as a selling point, not a liability.' },
         { label: 'Walkthroughs', content: 'Recorded short videos walking through every button in the UI so nothing felt like a black box.' }
       ]
     },
@@ -196,7 +196,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { type: 'video', url: 'https://www.youtube.com/embed/W_M-z_W_K2k', caption: 'Product Walkthrough' },
       { type: 'image', url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800', caption: 'Infrastructure node network' }
     ],
-    comprehensiveExecution: 'I put together 12 deep-dive threads and 8 UGC-style videos, each written so support could reuse them as answers to common questions — basically turning the content into a living FAQ.',
+    comprehensiveExecution: 'I put together 12 deep-dive threads and 8 UGC-style videos, each written so support could reuse them as answers to common questions, basically turning the content into a living FAQ.',
     impactReport: {
       narrative: 'Over time, the way people talked about deBridge shifted from "another bridge" to "the one that actually explains itself."',
       achievements: [
@@ -210,9 +210,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: '4',
     type: 'Ecosystem Growth & Community',
     title: 'Vara Network: Africa Expansion Strategy',
-    description: 'Built Vara Network a real developer community in Nigeria from scratch — no paid ads, just workshops and consistent support.',
+    description: 'Built Vara Network a real developer community in Nigeria from scratch: no paid ads, just workshops and consistent support.',
     tags: ['Ecosystem', 'Regional Growth', 'Community'],
-    header: 'Vara Network — African Ecosystem Growth',
+    header: 'Vara Network: African Ecosystem Growth',
     bannerImage: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1200',
     metadata: {
       project: 'Regional Market Expansion',
@@ -225,13 +225,13 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Dev Ratio', value: '50%', subtext: 'Filtered for technical talent' },
       { label: 'Retention', value: '85%', subtext: 'Weekly active participation' }
     ],
-    executiveSummary: 'Vara Network wanted a real footprint in African Web3 — not just airdrop hunters passing through. I focused on onboarding actual developers and building an education-first community from scratch.',
+    executiveSummary: 'Vara Network wanted a real footprint in African Web3, not just airdrop hunters passing through. I focused on onboarding actual developers and building an education-first community from scratch.',
     marketContext: 'Nigeria is a top-5 market for crypto adoption, but most L1/L2 networks show up with shallow marketing that misses the technical talent already here. There\'s real appetite for hands-on mentorship.',
     theChallenge: 'Nobody knew Vara in the region, and we were competing for attention against much bigger, established foundations. The strategy had to feel local and useful, not corporate and distant.',
     strategicDeepDive: {
       title: 'How I approached it',
       points: [
-        { label: 'Localized workshops', content: 'Built workshop content around the specific challenges local developers deal with — connectivity, power, gas fees.' },
+        { label: 'Localized workshops', content: 'Built workshop content around the specific challenges local developers deal with: connectivity, power, gas fees.' },
         { label: 'Borrowed trust', content: 'Partnered with existing communities like Web3 Nigeria instead of trying to build trust from zero.' },
         { label: 'Rewarding progress', content: 'Set up systems that rewarded actual learning, not just social engagement.' }
       ]
@@ -262,7 +262,7 @@ export const EXPERIENCE: WorkExperience[] = [
   {
     period: '2023 - PRESENT',
     company: 'Vara Network',
-    role: 'African Ambassador — Layer 1 Blockchain',
+    role: 'African Ambassador, Layer 1 Blockchain',
     description: 'Led content and ecosystem-facing initiatives across African markets, growing an active community to 150+ members within six weeks.',
     highlights: [
       'Built a strong concentration of experienced developers.',
@@ -286,7 +286,7 @@ export const EXPERIENCE: WorkExperience[] = [
   {
     period: '2024 - PRESENT',
     company: 'Kamino Finance',
-    role: 'Confluence — Exclusive Content Program',
+    role: 'Confluence: Exclusive Content Program',
     description: 'Selected participant in an exclusive creator initiative by Kamino, a leading DeFi and liquidity protocol on Solana.',
     highlights: [
       'Contributed educational and ecosystem-focused content.',
@@ -373,10 +373,10 @@ export const TOOLS = [
 // Edit freely — add real dates/cities as they happen. Keep it factual; no invented quotes.
 export const FIELD_LOG: FieldLogEntry[] = [
   { id: '1', time: 'WK 1', city: 'PARTNERSHIP', entry: 'Vara Network African ambassador program kicks off.' },
-  { id: '2', time: 'WK 6', city: 'MILESTONE', entry: 'Builder community crosses 150 active members — zero paid ads.' },
+  { id: '2', time: 'WK 6', city: 'MILESTONE', entry: 'Builder community crosses 150 active members, zero paid ads.' },
   { id: '3', time: 'ONGOING', city: 'COMMUNITY', entry: 'Developer workshops run alongside Web3 Nigeria & Onchain Society.' },
   { id: '4', time: 'ONGOING', city: 'REMOTE', entry: 'Selected for Kamino Finance\u2019s Confluence content cohort.' },
-  { id: '5', time: 'ONGOING', city: 'REMOTE', entry: 'Solflare Guardian — community security & education.' },
+  { id: '5', time: 'ONGOING', city: 'REMOTE', entry: 'Solflare Guardian: community security & education.' },
   { id: '6', time: 'ONGOING', city: 'LAUNCH', entry: 'Co-founded VaraNames, first naming protocol on Vara.' },
 ];
 
