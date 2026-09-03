@@ -14,7 +14,8 @@ import {
   Radio,
   Sun,
   Moon,
-  Linkedin
+  Linkedin,
+  Eye
 } from 'lucide-react';
 import {
   SERVICES,
@@ -159,9 +160,16 @@ const VisitorCounter: React.FC = () => {
   if (count === null) return null;
 
   return (
-    <p className="dateline text-[10px] text-muted">
-      YOU'RE VISITOR #{count.toLocaleString()}
-    </p>
+    <div className="flex flex-col items-center text-center py-10 border-t border-line">
+      <div className="flex items-center gap-2 dateline text-[10px] text-signal mb-3">
+        <span className="w-1.5 h-1.5 rounded-full bg-signal animate-pulse"></span>
+        LIVE VISITOR COUNT
+      </div>
+      <span className="text-5xl md:text-6xl font-display font-medium text-paper">
+        #{count.toLocaleString()}
+      </span>
+      <p className="dateline text-[10px] text-muted mt-2">YOU'RE THE {count.toLocaleString()}TH PERSON TO VISIT THIS SITE</p>
+    </div>
   );
 };
 
@@ -333,7 +341,7 @@ function App() {
               <p className="dateline text-[11px] text-muted">GROWTH & MARKETING</p>
               <div className="py-8 md:py-0">
                 <h1 className="text-6xl md:text-7xl font-display font-medium text-paper leading-[0.92] mb-6">
-                  Divo<br />Creates.
+                  DIVO<br />CREATES.
                 </h1>
                 <div className="w-14 border-t-2 border-signal mb-4"></div>
                 <p className="text-muted mb-8 max-w-xs">Content, campaigns, and community growth built to convert.</p>
@@ -350,8 +358,8 @@ function App() {
             </div>
             <div className="relative h-[280px] md:h-auto order-1 md:order-2">
               <img
-                src="/photos/divo-portrait-studio.png"
-                alt="Divo"
+                src="/photos/divo-portrait-outdoor.png"
+                alt="DIVO"
                 className="absolute inset-0 w-full h-full object-cover object-top grayscale contrast-110"
               />
             </div>
@@ -388,20 +396,22 @@ function App() {
         <section id="about" className="max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32 scroll-mt-16">
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-20 items-start">
             <div className="aspect-[4/5] overflow-hidden border border-line bg-surface">
-              <img src="/photos/divo-portrait-studio.png" alt="Divo" className="w-full h-full object-cover grayscale contrast-110" />
+              <img src="/photos/divo-portrait-studio.png" alt="DIVO" className="w-full h-full object-cover grayscale contrast-110" />
             </div>
             <div>
               <p className="dateline text-[11px] text-signal mb-6">ABOUT ME</p>
               <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-8 leading-tight">
-                Working with builders across Africa and beyond.
+                From crypto gigs to growth and marketing.
               </h2>
               <div className="space-y-4 text-muted leading-relaxed mb-10">
-                <p>I got into Web3 marketing because most of it is either hype or homework, nothing in between. My work sits in that gap: clear enough for a newcomer, credible enough for the team's own engineers.</p>
-                <p>Most of what I do is African growth work: getting developers to actually build on infrastructure most Western teams don't know how to talk to yet.</p>
+                <p>I entered crypto at 15, mostly out of curiosity. I didn't have a plan, I just kept saying yes to things: modding communities, trading badly, taking small dev gigs I barely knew how to finish, freelancing for whoever would hire a teenager on Discord. Growth and marketing is just the thing that stuck after all of that.</p>
+                <p>I still write and edit most of my own content. I spent a stretch as African growth lead for a major blockchain network, which taught me more about people than any marketing course could.</p>
+                <p>Right now I'm also majoring in Computer Science, and if you catch me with headphones in, it's almost always Billie Eilish.</p>
               </div>
               <div className="grid grid-cols-2 gap-6 dateline text-[11px] border-t border-line pt-6">
                 <div><span className="text-muted block mb-1">FOCUS</span><span className="text-paper">Growth & Marketing</span></div>
                 <div><span className="text-muted block mb-1">SINCE</span><span className="text-paper">2023</span></div>
+                <div><span className="text-muted block mb-1">STUDYING</span><span className="text-paper">Computer Science</span></div>
                 <div><span className="text-muted block mb-1">STATUS</span><span className="text-paper">Open to roles</span></div>
               </div>
             </div>
@@ -490,7 +500,12 @@ function App() {
           <h2 className="text-3xl md:text-5xl font-display font-medium text-paper mb-16 max-w-2xl">My content</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {TWEETS.map((tweet, idx) => (
-              <div key={idx} className="bg-surface border border-line p-2 flex justify-center">
+              <div key={idx} className="bg-surface border border-line p-2 flex flex-col items-center">
+                {tweet.views && (
+                  <div className="w-full flex items-center gap-1.5 px-2 pt-1 pb-2 dateline text-[10px] text-muted">
+                    <Eye size={12} /> {tweet.views} VIEWS
+                  </div>
+                )}
                 <TweetEmbed url={tweet.url} />
               </div>
             ))}
@@ -546,6 +561,8 @@ function App() {
             </a>
           </div>
 
+          <VisitorCounter />
+
           <div className="w-full overflow-hidden border-y border-line py-4">
             <div className="whitespace-nowrap animate-ticker-slow flex items-center gap-10 dateline text-[11px] text-muted w-max">
               {[...FOOTER_TAGS, ...FOOTER_TAGS, ...FOOTER_TAGS].map((tag, idx) => (
@@ -553,10 +570,7 @@ function App() {
               ))}
             </div>
           </div>
-          <p className="mt-8 dateline text-[10px] text-muted">© {new Date().getFullYear()} DIVO</p>
-          <div className="mt-2">
-            <VisitorCounter />
-          </div>
+          <p className="mt-8 dateline text-[10px] text-muted text-center">© {new Date().getFullYear()} DIVO</p>
         </footer>
       </main>
     </div>

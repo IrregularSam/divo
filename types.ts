@@ -28,6 +28,7 @@ export interface PortfolioItem {
 
 export interface TweetItem {
   url: string;
+  views?: string;
 }
 
 export interface FieldLogEntry {
